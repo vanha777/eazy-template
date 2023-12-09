@@ -1,0 +1,2 @@
+[workspace]
+members = ["service_eazypic", "service_eazymana"]
