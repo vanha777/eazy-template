@@ -6,31 +6,31 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-tokio = { workspace = true, features = ["full"] }
-serde = { workspace = true, features = ["derive"] }
+tokio.workspace = true
+serde.workspace = true
 serde_json.workspace = true
 chrono.workspace = true
 dotenv.workspace = true
 sha256.workspace = true
 tokio-stream.workspace = true
-tower.workspace = { version = true, features = ["util", "make"] }
-axum.workspace = { version = true, features = ["multipart"] }
-axum-server.workspace = { version = true, features = ["tls-rustls"] }
+tower.workspace = true
+axum.workspace = true
+axum-server.workspace = true
 thiserror.workspace = true
-tower-http  = {workspace = true,features = ["cors", "fs", "compression-gzip", "decompression-gzip", "trace"] }
+tower-http.workspace  = true
 base64.workspace = true
 mime_guess.workspace = true
 rand.workspace = true
 # AWS dependencies
-aws-config.workspace = { version = true }
+aws-config.workspace =  true 
 aws-endpoint.workspace = true
-aws-sdk-s3.workspace = { version = true }
+aws-sdk-s3.workspace =  true 
 aws-smithy-http.workspace = true
 http-body.workspace = true
 # Dynamic dependencies
-reqwest.workspace = { version = true, features = ["json"] }
+reqwest.workspace = true
 tempfile.workspace = true
-polars.workspace = { version = true, features = ["lazy"] }
+polars.workspace = true
 
 # DB  dependencies
 mongodb.workspace = true
