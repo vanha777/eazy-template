@@ -17,7 +17,6 @@ pub async fn get_image_upload_link(
     headers: HeaderMap,
     state: Extension<Arc<ServerState>>,
 ) -> NeverFailed<impl IntoResponse> {
-
     let file_name: String = rand::thread_rng()
         .sample_iter(&Alphanumeric)
         .take(10) // You can adjust the length

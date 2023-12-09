@@ -6,3 +6,5 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+service_eazypic = {path = "../service_eazypic"}
+common_aws = {path = "../common_aws"}

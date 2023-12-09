@@ -9,11 +9,6 @@ use axum::{
 };
 use http::{header, Method, Request, Response};
 use tower::ServiceBuilder;
-use tower_http::{
-    compression::CompressionLayer,
-    cors::{Any, CorsLayer},
-    trace::TraceLayer,
-};
 
 pub fn routes() -> Router {
     Router::new().route(

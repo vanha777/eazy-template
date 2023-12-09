@@ -78,12 +78,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "arc-swap"
-version = "1.6.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bddcadddf5e9015d310179a59bb28c4d4b9920ad0f11e8e14dbadf654890c9a6"
-
-[[package]]
 name = "argminmax"
 version = "0.6.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -647,7 +641,6 @@ dependencies = [
  "matchit",
  "memchr",
  "mime",
- "multer",
  "percent-encoding",
  "pin-project-lite",
  "rustversion",
@@ -685,17 +678,12 @@ version = "0.5.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "447f28c85900215cc1bea282f32d4a2f22d55c5a300afdfbc661c8d6a632e063"
 dependencies = [
- "arc-swap",
  "bytes",
  "futures-util",
  "http 0.2.11",
  "http-body 0.4.6",
  "hyper",
- "pin-project-lite",
- "rustls",
- "rustls-pemfile",
  "tokio",
- "tokio-rustls",
  "tower-service",
 ]
 
@@ -997,6 +985,10 @@ dependencies = [
  "strum_macros",
  "unicode-width",
 ]
+
+[[package]]
+name = "common_aws"
+version = "0.1.0"
 
 [[package]]
 name = "const-oid"
@@ -2330,24 +2322,6 @@ dependencies = [
  "typed-builder",
  "uuid",
  "webpki-roots",
-]
-
-[[package]]
-name = "multer"
-version = "2.1.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "01acbdc23469fd8fe07ab135923371d5f5a422fbf9c522158677c8eb15bc51c2"
-dependencies = [
- "bytes",
- "encoding_rs",
- "futures-util",
- "http 0.2.11",
- "httparse",
- "log",
- "memchr",
- "mime",
- "spin 0.9.8",
- "version_check",
 ]
 
 [[package]]
@@ -3805,6 +3779,10 @@ dependencies = [
 [[package]]
 name = "service_eazymana"
 version = "0.1.0"
+dependencies = [
+ "common_aws",
+ "service_eazypic",
+]
 
 [[package]]
 name = "service_eazypic"
