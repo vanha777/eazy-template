@@ -6,3 +6,44 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+tokio = { version = "1.31.0", features = ["full"] }
+serde = { version ="1.0.187", features = ["derive"] }
+serde_json = "1.0.104"
+chrono = "0.4"
+dotenv = "0.15.0"
+sha256 = "1.1.1"
+tokio-stream = "0.1"
+tower = { version = "0.4", features = ["util", "make"] }
+axum = { version= "0.6.20", features = ["multipart"]}
+axum-server = { version = "0.5.1", features = ["tls-rustls"] }
+thiserror = "1.0"
+tower-http = { version = "0.4.0", features = ["cors", "fs", "compression-gzip", "decompression-gzip", "trace"] }
+base64 = "0.21.5"
+mime_guess = "2.0.4"
+rand = "0.8.5"
+# AWS dependencies
+aws-config = { version ="1.0.1" }
+aws-endpoint = "0.60.0"
+aws-sdk-s3 = { version = "1.1.0"}
+aws-smithy-http = "0.60.0"
+http-body = "1.0.0"
+# Dynamic dependencies
+reqwest = { version = "0.11.19", features = ["json"] }
+tempfile = "3.8.0"
+polars = { version = "0.35.2", features = ["lazy"] }
+
+# DB  dependencies
+mongodb = "2.6.0"
+# DB object relational managing
+sea-orm = "0.12.2"
+sea-orm-macros = "0.12.3"
+# Async driver for PostgreSQL
+tokio-postgres = "0.7"
+# Connection pooling 
+bb8 = "0.8.0"
+# PostgreSQL support for bb8
+bb8-postgres ="0.8.0"
+#uuid generator for sql
+uuid = "1.4.1"
+# Internal crate
+async-openai = "0.17.0"
