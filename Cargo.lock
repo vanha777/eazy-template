@@ -999,6 +999,20 @@ dependencies = [
 ]
 
 [[package]]
+name = "common_heygen"
+version = "0.1.0"
+dependencies = [
+ "async-openai",
+ "common_openai",
+ "dotenv",
+ "lib_errors",
+ "lib_sharedstate",
+ "reqwest",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
 name = "common_openai"
 version = "0.1.0"
 dependencies = [
@@ -3924,6 +3938,7 @@ dependencies = [
  "bb8",
  "bb8-postgres",
  "chrono",
+ "common_heygen",
  "common_openai",
  "common_photoshop",
  "dotenv",

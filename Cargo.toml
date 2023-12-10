@@ -5,6 +5,8 @@ members = [
     "module_aws",
     "module_content",
     "common_photoshop",
+    "common_openai",
+    "common_heygen",
     "lib_errors",
     "lib_sharedstate",
     ]

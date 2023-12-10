@@ -1,12 +1,11 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
-use crate::models::heygen::{
-    Attributions, AttributionsValue, CreateVideoRequest, Variables, VideoRequest,
-};
-use crate::utilities::hey_gen;
 use axum::Extension;
 use axum::{extract::Path, http::HeaderMap, response::IntoResponse, Json};
+use common_heygen::models::{
+    Attributions, AttributionsValue, CreateVideoRequest, Variables, VideoRequest,
+};
 use common_openai::models::UserRequest;
 use lib_errors::NeverFailed;
 use lib_sharedstate::ServerState;
@@ -19,7 +18,7 @@ pub async fn hey_gen_create_video(
     state: Extension<Arc<ServerState>>,
     Json(my_body): Json<VideoRequest>,
 ) -> NeverFailed<impl IntoResponse> {
-    let res = hey_gen::create_video::video_request(&state.heygen_client, my_body).await?;
+    let res = common_heygen::video_request(&state.heygen_client, my_body).await?;
     Ok(Json(res))
 }
 
@@ -38,8 +37,7 @@ pub async fn hey_gen_create_video_by_template(
         test: Some(true), // true for testing purposes
     };
 
-    let res =
-        hey_gen::create_video::create_video_by_template(&state.heygen_client, req.clone()).await?;
+    let res = common_heygen::create_video_by_template(&state.heygen_client, req.clone()).await?;
 
     Ok(Json(res))
 }
@@ -50,7 +48,7 @@ pub async fn hey_gen_get_video(
     Json(my_body): Json<UserRequest>,
 ) -> NeverFailed<impl IntoResponse> {
     let client = state.heygen_client.clone();
-    let res = hey_gen::get_videos::get_video_request(&client, my_body).await?;
+    let res = common_heygen::get_video_request(&client, my_body).await?;
     Ok(Json(res))
 }
 
@@ -61,7 +59,7 @@ pub async fn hey_gen_get_template_by_id(
     Json(my_body): Json<UserRequest>,
 ) -> NeverFailed<impl IntoResponse> {
     let client = state.heygen_client.clone();
-    let res = hey_gen::get_template::get_template_request(&client, my_body).await?;
+    let res = common_heygen::get_template_request(&client, my_body).await?;
 
     //get variable from template
     let vec_scene: Vec<HashMap<String, HashMap<String, String>>> = res

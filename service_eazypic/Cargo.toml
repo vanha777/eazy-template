@@ -12,6 +12,7 @@ edition = "2021"
 module_content = {path = "../module_content"}
 module_aws = {path = "../module_aws"}
 common_openai = {path = "../common_openai"}
+common_heygen = {path = "../common_heygen"}
 common_photoshop = {path = "../common_photoshop"}
 lib_errors = {path = "../lib_errors"}
 lib_sharedstate={path = "../lib_sharedstate"}

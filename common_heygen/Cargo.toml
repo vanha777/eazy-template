@@ -6,3 +6,11 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+common_openai = {path = "../common_openai"}
+lib_errors = {path = "../lib_errors"}
+lib_sharedstate={path = "../lib_sharedstate"}
+serde.workspace = true
+serde_json.workspace = true
+async-openai.workspace = true
+reqwest.workspace = true
+dotenv.workspace = true
