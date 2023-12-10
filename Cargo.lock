@@ -999,8 +999,35 @@ dependencies = [
 ]
 
 [[package]]
-name = "common_aws"
+name = "common_openai"
 version = "0.1.0"
+dependencies = [
+ "async-openai",
+ "axum",
+ "axum-server",
+ "dotenv",
+ "lib_errors",
+ "lib_sharedstate",
+ "reqwest",
+ "serde",
+ "serde_json",
+]
+
+[[package]]
+name = "common_photoshop"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "axum-server",
+ "dotenv",
+ "lib_errors",
+ "lib_sharedstate",
+ "module_aws",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+]
 
 [[package]]
 name = "const-oid"
@@ -2116,6 +2143,36 @@ dependencies = [
 ]
 
 [[package]]
+name = "lib_errors"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "thiserror",
+]
+
+[[package]]
+name = "lib_sharedstate"
+version = "0.1.0"
+dependencies = [
+ "async-openai",
+ "aws-config",
+ "aws-endpoint",
+ "aws-sdk-s3",
+ "aws-smithy-http 0.60.0",
+ "axum",
+ "bb8",
+ "bb8-postgres",
+ "chrono",
+ "mongodb",
+ "rand",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+ "tokio-postgres",
+]
+
+[[package]]
 name = "libc"
 version = "0.2.150"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2287,6 +2344,45 @@ dependencies = [
  "libc",
  "wasi",
  "windows-sys 0.48.0",
+]
+
+[[package]]
+name = "module_aws"
+version = "0.1.0"
+dependencies = [
+ "aws-config",
+ "aws-endpoint",
+ "aws-sdk-s3",
+ "aws-smithy-http 0.60.0",
+ "axum",
+ "chrono",
+ "dotenv",
+ "lib_errors",
+ "lib_sharedstate",
+ "rand",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tokio",
+]
+
+[[package]]
+name = "module_content"
+version = "0.1.0"
+dependencies = [
+ "async-openai",
+ "axum",
+ "axum-server",
+ "common_openai",
+ "common_photoshop",
+ "dotenv",
+ "lib_errors",
+ "lib_sharedstate",
+ "module_aws",
+ "rand",
+ "reqwest",
+ "serde",
+ "serde_json",
 ]
 
 [[package]]
@@ -3468,9 +3564,9 @@ dependencies = [
 
 [[package]]
 name = "rustix"
-version = "0.38.27"
+version = "0.38.28"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bfeae074e687625746172d639330f1de242a178bf3189b51e35a7a21573513ac"
+checksum = "72e572a5e8ca657d7366229cdde4bd14c4eb5499a9573d4d366fe1b599daa316"
 dependencies = [
  "bitflags 2.4.1",
  "errno",
@@ -3530,9 +3626,9 @@ checksum = "7ffc183a10b4478d04cbbbfc96d0873219d962dd5accaff2ffbd4ceb7df837f4"
 
 [[package]]
 name = "ryu"
-version = "1.0.15"
+version = "1.0.16"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1ad4cc8da4ef723ed60bced201181d83791ad433213d8c24efffda1eec85d741"
+checksum = "f98d2aa92eebf49b69786be48e4477826b256916e84a57ff2a4f21923b48eb4c"
 
 [[package]]
 name = "schannel"
@@ -3810,8 +3906,7 @@ dependencies = [
 name = "service_eazymana"
 version = "0.1.0"
 dependencies = [
- "common_aws",
- "service_eazypic",
+ "module_aws",
 ]
 
 [[package]]
@@ -3829,9 +3924,15 @@ dependencies = [
  "bb8",
  "bb8-postgres",
  "chrono",
+ "common_openai",
+ "common_photoshop",
  "dotenv",
  "http-body 1.0.0",
+ "lib_errors",
+ "lib_sharedstate",
  "mime_guess",
+ "module_aws",
+ "module_content",
  "mongodb",
  "polars",
  "rand",

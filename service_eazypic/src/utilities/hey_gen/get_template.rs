@@ -1,9 +1,8 @@
 use reqwest;
 extern crate dotenv;
-use crate::models;
 use crate::models::heygen::GetTemplateResponse;
-use crate::models::openAi::UserRequest;
-use models::error::Errors;
+use common_openai::models::UserRequest;
+use lib_errors::Errors;
 //templateId=39c20fc0bf9c4feda41115c4a9f8fbcc
 pub async fn get_template_request(
     client: &str,

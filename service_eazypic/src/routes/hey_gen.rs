@@ -14,18 +14,15 @@ pub fn routes() -> Router {
     Router::new()
         .route(
             "/create-video",
-            post(handler::generator::hey_gen::hey_gen_create_video),
+            post(handler::hey_gen::hey_gen_create_video),
         )
         .route(
             "/{uuid}/create-video",
-            post(handler::generator::hey_gen::hey_gen_create_video_by_template),
+            post(handler::hey_gen::hey_gen_create_video_by_template),
         )
-        .route(
-            "/get-video",
-            post(handler::generator::hey_gen::hey_gen_get_video),
-        )
+        .route("/get-video", post(handler::hey_gen::hey_gen_get_video))
         .route(
             "/get-template",
-            post(handler::generator::hey_gen::hey_gen_get_template_by_id),
+            post(handler::hey_gen::hey_gen_get_template_by_id),
         )
 }

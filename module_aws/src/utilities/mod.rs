@@ -1,11 +1,8 @@
-extern crate aws_config;
-extern crate aws_sdk_s3;
-
-use crate::models::error::Errors;
 use aws_config::load_defaults;
 use aws_config::BehaviorVersion;
 use aws_sdk_s3::presigning::PresigningConfig;
 use aws_sdk_s3::Client;
+use lib_errors::Errors;
 use std::env;
 
 use std::time::Duration;

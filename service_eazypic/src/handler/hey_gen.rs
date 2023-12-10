@@ -1,22 +1,15 @@
 use std::collections::HashMap;
 use std::sync::Arc;
 
-use crate::models::error::NeverFailed;
 use crate::models::heygen::{
     Attributions, AttributionsValue, CreateVideoRequest, Variables, VideoRequest,
 };
-use crate::models::openAi::UserRequest;
-use crate::models::ServerState;
-use crate::utilities::heyGen;
-use crate::utilities::heyGen::create_video::create_video_by_template;
+use crate::utilities::hey_gen;
 use axum::Extension;
-use axum::{
-    extract::Path,
-    http::HeaderMap,
-    http::StatusCode,
-    response::{Html, IntoResponse},
-    Json,
-};
+use axum::{extract::Path, http::HeaderMap, response::IntoResponse, Json};
+use common_openai::models::UserRequest;
+use lib_errors::NeverFailed;
+use lib_sharedstate::ServerState;
 use serde_json::json;
 //const VIDEO_COMPONENT:Vec<String> = vec!["text".to_string(),"image".to_string(),"photar".to_string(),"video".to_string(),"avatar".to_string()];
 //const COMPONENT_VALUE:Vec<String> = vec!["fit".to_string(),"id".to_string(),"voice_id".to_string(),"link".to_string(),"text".to_string(),"play_style".to_string()];
@@ -26,7 +19,7 @@ pub async fn hey_gen_create_video(
     state: Extension<Arc<ServerState>>,
     Json(my_body): Json<VideoRequest>,
 ) -> NeverFailed<impl IntoResponse> {
-    let res = heyGen::create_video::video_request(&state.heygen_client, my_body).await?;
+    let res = hey_gen::create_video::video_request(&state.heygen_client, my_body).await?;
     Ok(Json(res))
 }
 
@@ -46,7 +39,7 @@ pub async fn hey_gen_create_video_by_template(
     };
 
     let res =
-        heyGen::create_video::create_video_by_template(&state.heygen_client, req.clone()).await?;
+        hey_gen::create_video::create_video_by_template(&state.heygen_client, req.clone()).await?;
 
     Ok(Json(res))
 }
@@ -57,7 +50,7 @@ pub async fn hey_gen_get_video(
     Json(my_body): Json<UserRequest>,
 ) -> NeverFailed<impl IntoResponse> {
     let client = state.heygen_client.clone();
-    let res = heyGen::get_videos::get_video_request(&client, my_body).await?;
+    let res = hey_gen::get_videos::get_video_request(&client, my_body).await?;
     Ok(Json(res))
 }
 
@@ -68,7 +61,7 @@ pub async fn hey_gen_get_template_by_id(
     Json(my_body): Json<UserRequest>,
 ) -> NeverFailed<impl IntoResponse> {
     let client = state.heygen_client.clone();
-    let res = heyGen::get_template::get_template_request(&client, my_body).await?;
+    let res = hey_gen::get_template::get_template_request(&client, my_body).await?;
 
     //get variable from template
     let vec_scene: Vec<HashMap<String, HashMap<String, String>>> = res

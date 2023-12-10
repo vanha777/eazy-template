@@ -12,12 +12,6 @@ use tower::ServiceBuilder;
 
 pub fn routes() -> Router {
     Router::new()
-        .route(
-            "/signin",
-            post(handler::authentication::authentications::login),
-        )
-        .route(
-            "/signup",
-            post(handler::authentication::authentications::signup),
-        )
+        .route("/signin", post(handler::authentications::login))
+        .route("/signup", post(handler::authentications::signup))
 }

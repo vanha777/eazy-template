@@ -5,7 +5,17 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+
+
 [dependencies]
+# workspace.directories
+module_content = {path = "../module_content"}
+module_aws = {path = "../module_aws"}
+common_openai = {path = "../common_openai"}
+common_photoshop = {path = "../common_photoshop"}
+lib_errors = {path = "../lib_errors"}
+lib_sharedstate={path = "../lib_sharedstate"}
+
 tokio.workspace = true
 serde.workspace = true
 serde_json.workspace = true
@@ -52,4 +62,3 @@ async-openai.workspace = true
 # cc.workspace = true
 
 [dev-dependencies]
-# rand.workspace = true

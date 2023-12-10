@@ -1,5 +1,13 @@
 [workspace]
-members = ["service_eazypic", "service_eazymana"]
+members = [
+    "service_eazypic",
+    "service_eazymana",
+    "module_aws",
+    "module_content",
+    "common_photoshop",
+    "lib_errors",
+    "lib_sharedstate",
+    ]
 
 [workspace.dependencies]
 tokio = { version = "1.31.0", features = ["full"] }

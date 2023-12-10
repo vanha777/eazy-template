@@ -1,11 +1,14 @@
 [package]
-name = "common_openai"
+name = "module_content"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+common_photoshop={path = "../common_photoshop"}
+common_openai={path = "../common_openai"}
+module_aws={path = "../module_aws"}
 lib_errors = {path = "../lib_errors"}
 lib_sharedstate={path = "../lib_sharedstate"}
 serde.workspace = true
@@ -15,3 +18,4 @@ reqwest.workspace = true
 dotenv.workspace = true
 axum.workspace = true
 axum-server.workspace = true
+rand.workspace = true

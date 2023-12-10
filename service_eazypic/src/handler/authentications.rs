@@ -1,18 +1,10 @@
 use std::sync::Arc;
 
-use crate::models::error::NeverFailed;
-use crate::models::openAi::UserRequest;
-use crate::models::ServerState;
-use crate::utilities::contentGenerator;
-use crate::{handler::out_bound::out_call, models::openAi::Response};
 use axum::Extension;
-use axum::{
-    extract::Path,
-    http::HeaderMap,
-    http::StatusCode,
-    response::{Html, IntoResponse},
-    Json,
-};
+use axum::{http::HeaderMap, response::IntoResponse, Json};
+use common_openai::models::UserRequest;
+use lib_errors::NeverFailed;
+use lib_sharedstate::ServerState;
 
 pub async fn login(
     headers: HeaderMap,
@@ -21,7 +13,7 @@ pub async fn login(
 ) -> NeverFailed<impl IntoResponse> {
     //login needed to implemented
     let client = state.openai_client.clone();
-    let res = contentGenerator::dale::dale_request(client, my_body).await?;
+    let res = common_openai::utilities::dale_request(client, my_body).await?;
     Ok(Json(res))
 }
 
@@ -32,6 +24,6 @@ pub async fn signup(
 ) -> NeverFailed<impl IntoResponse> {
     //login needed to implemented
     let client = state.openai_client.clone();
-    let res = contentGenerator::dale::dale_request(client, my_body).await?;
+    let res = common_openai::utilities::dale_request(client, my_body).await?;
     Ok(Json(res))
 }

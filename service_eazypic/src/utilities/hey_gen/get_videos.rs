@@ -1,9 +1,8 @@
 use reqwest;
-use serde_json::{json, Value};
+use serde_json::Value;
 extern crate dotenv;
-use crate::models;
-use crate::models::openAi::UserRequest;
-use models::error::Errors;
+use common_openai::models::UserRequest;
+use lib_errors::Errors;
 
 pub async fn get_video_request(client: &str, request: UserRequest) -> Result<Value, Errors> {
     let video_id = request.input.unwrap_or_default();

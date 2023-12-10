@@ -4,8 +4,6 @@ use axum::{
 };
 use thiserror::Error;
 
-use super::openAi;
-
 pub type NeverFailed<T> = core::result::Result<T, Errors>;
 
 #[derive(Error, Debug)]

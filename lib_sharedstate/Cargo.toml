@@ -1,0 +1,28 @@
+[package]
+name = "lib_sharedstate"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+axum.workspace = true
+chrono.workspace = true
+rand.workspace = true
+reqwest.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+tokio.workspace = true
+aws-config.workspace =  true 
+aws-endpoint.workspace = true
+aws-sdk-s3.workspace =  true 
+aws-smithy-http.workspace = true
+# Connection pooling 
+bb8.workspace = true
+# PostgreSQL support for bb8
+bb8-postgres.workspace = true
+# Async driver for PostgreSQL
+tokio-postgres.workspace = true
+# DB  dependencies
+mongodb.workspace = true
+async-openai.workspace = true

@@ -3,29 +3,18 @@ pub mod models;
 pub mod routes;
 pub mod utilities;
 
-use axum::{
-    http::{
-        self,
-        header::{AUTHORIZATION, CONTENT_TYPE, LOCATION},
-    },
-    routing::{get, post},
-    Extension, Router,
-};
+use axum::Extension;
 use bb8::Pool;
 use bb8_postgres::PostgresConnectionManager;
 use dotenv::dotenv;
-use models::ServerState;
+use lib_sharedstate::ServerState;
 use mongodb::{options::ClientOptions, Client};
 use std::{env, net::SocketAddr, str::FromStr, sync::Arc};
 use tokio_postgres::NoTls;
 use tower::ServiceBuilder;
-use tower_http::{
-    compression::CompressionLayer,
-    cors::{Any, CorsLayer},
-    trace::TraceLayer,
-};
+use tower_http::{compression::CompressionLayer, cors::CorsLayer, trace::TraceLayer};
 
-use crate::utilities::aws_s3::get_aws_client;
+use module_aws::utilities::get_aws_client;
 #[tokio::main]
 async fn main() {
     // Load the .env file

@@ -1,23 +1,14 @@
 use std::sync::Arc;
 
-use crate::models::error::NeverFailed;
-use crate::models::openAi::UserRequest;
-use crate::models::ServerState;
-use crate::{handler::out_bound::out_call, models::openAi::Response};
+use lib_errors::NeverFailed;
+use lib_sharedstate::ServerState;
 
 use axum::Extension;
 //extern crate csvReader;
-use axum::{
-    extract::Path,
-    http::HeaderMap,
-    http::StatusCode,
-    response::{Html, IntoResponse},
-    Json,
-};
+use axum::{http::HeaderMap, response::IntoResponse, Json};
 use mongodb::bson::oid::ObjectId;
 use mongodb::bson::{doc, Bson};
 use serde_json::json;
-use tokio_postgres::Config;
 
 pub async fn welcome(
     headers: HeaderMap,

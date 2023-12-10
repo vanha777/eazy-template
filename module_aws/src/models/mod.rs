@@ -88,3 +88,16 @@ pub struct AwsHttpResponse {
     pub uri: Option<String>,
     pub headers: Option<String>,
 }
+
+#[derive(Clone, Serialize, Deserialize, Debug, Default)]
+pub struct RequestInput {
+    pub data: Option<String>,
+    pub id: Option<String>,
+}
+
+#[derive(Clone, Serialize, Deserialize, Debug, Default)]
+pub struct ImageJobReply {
+    pub status: Option<String>,
+    pub file_name: Option<String>,
+    pub link: Option<String>,
+}

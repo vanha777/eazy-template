@@ -1,18 +1,25 @@
-use crate::models;
 use async_openai::{
     config::OpenAIConfig,
     types::{
         ChatCompletionRequestAssistantMessage, ChatCompletionRequestMessage,
         ChatCompletionRequestSystemMessage, ChatCompletionRequestUserMessage,
-        ChatCompletionRequestUserMessageContent, CreateChatCompletionRequest, Role,
+        ChatCompletionRequestUserMessageContent, CreateChatCompletionRequest,
+        CreateImageRequestArgs, ImageSize, ResponseFormat, Role,
     },
     Client,
 };
 
-pub async fn gpt_request(
-    client: Client<OpenAIConfig>,
-    input: &str,
-) -> Result<String, models::error::Errors> {
+use crate::models;
+use crate::models::{DaleResponse, ImageGenerationRequest, UserRequest};
+use async_openai::types::{CreateImageRequest, ImagesResponse};
+use reqwest;
+use serde_json::{json, Value};
+
+use dotenv::dotenv;
+use lib_errors::Errors;
+use std::env;
+
+pub async fn gpt_request(client: Client<OpenAIConfig>, input: &str) -> Result<String, Errors> {
     let chat_config:Vec<ChatCompletionRequestMessage> = vec![
         ChatCompletionRequestMessage::System(ChatCompletionRequestSystemMessage{
              content: Some("You are a helpful assistant for transforming user ideas into AI text commands used to generate images".to_string()), role: Role::System,name:None
@@ -29,7 +36,7 @@ pub async fn gpt_request(
                name:None
             }),
             ChatCompletionRequestMessage::User(ChatCompletionRequestUserMessage{
-                content: Some(ChatCompletionRequestUserMessageContent::Text(input.to_string())), 
+                content: Some(ChatCompletionRequestUserMessageContent::Text(input.to_string())),
                 role: Role::User,name:None
                })
         ];
@@ -59,6 +66,51 @@ pub async fn gpt_request(
         .chat()
         .create(request)
         .await
-        .map_err(|e| models::error::Errors::Error(e.to_string()))?;
+        .map_err(|e| Errors::Error(e.to_string()))?;
     Ok(res.choices[0].message.content.clone().unwrap_or_default())
+}
+
+pub async fn dale_request(
+    client: Client<OpenAIConfig>,
+    request: UserRequest,
+) -> Result<Value, Errors> {
+    let request = CreateImageRequestArgs::default()
+        .prompt(request.input.unwrap_or_default())
+        .n(1)
+        // .response_format(ResponseFormat::B64Json)
+        .response_format(ResponseFormat::Url)
+        .size(ImageSize::S256x256)
+        .user("async-openai")
+        .build()
+        .map_err(|e| Errors::Error(e.to_string()))?;
+
+    let response = client
+        .images()
+        .create(request)
+        .await
+        .map_err(|e| Errors::Error(e.to_string()))?;
+    Ok(json!(response))
+}
+
+pub async fn dale3_request(
+    client: Client<OpenAIConfig>,
+    request: &str,
+) -> Result<ImagesResponse, Errors> {
+    let request = CreateImageRequest {
+        prompt: request.to_string(),
+        model: Some(async_openai::types::ImageModel::DallE3),
+        n: Some(1),
+        quality: Some(async_openai::types::ImageQuality::Standard), // to test, HD when in production
+        response_format: Some(ResponseFormat::B64Json),             // can be base64
+        size: Some(ImageSize::S1024x1024), //just for testing, inscrease in production
+        style: Some(async_openai::types::ImageStyle::Vivid),
+        user: None, //not needed for now
+    };
+
+    let response = client
+        .images()
+        .create(request)
+        .await
+        .map_err(|e| Errors::Error(e.to_string()))?;
+    Ok(response)
 }

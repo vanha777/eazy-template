@@ -1,11 +1,8 @@
-use polars::error::map_err;
 use reqwest;
 use serde_json::{json, Value};
 extern crate dotenv;
-use crate::models;
 use crate::models::heygen::{CreateVideoRequest, VideoRequest};
-use models::error::Errors;
-use std::env;
+use lib_errors::Errors;
 
 pub async fn video_request(client: &str, request: VideoRequest) -> Result<Value, Errors> {
     let data = json!({

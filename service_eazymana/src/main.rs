@@ -1,5 +1,5 @@
 pub mod handler;
-use common_aws;
+use module_aws;
 fn main() {
     println!("Hello, world!");
 }

@@ -1,21 +1,10 @@
-use std::sync::Arc;
-
 use crate::handler;
 pub mod authentications;
 pub mod aws;
 pub mod hey_gen;
 pub mod openai;
 pub mod photoshop;
-use axum::{
-    http::{
-        self,
-        header::{AUTHORIZATION, CONTENT_TYPE, LOCATION},
-    },
-    routing::{get, post},
-    Extension, Router,
-};
-use http::{header, Method, Request, Response};
-use serde::{Deserialize, Serialize};
+use axum::{routing::post, Router};
 
 pub fn routes() -> Router {
     Router::new()
