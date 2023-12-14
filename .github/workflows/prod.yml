@@ -45,6 +45,8 @@ jobs:
           file: ./services/service_docurust/Dockerfile
           push: true
           tags: vanha777/service_docurust
+          # build-args: |
+          #   PORT=${{ secrets.PORT }}
           
       - name: Build and push Docker image for service_eazypic
         uses: docker/build-push-action@v2
@@ -53,6 +55,16 @@ jobs:
           file: ./services/service_eazypic/Dockerfile
           push: true
           tags: vanha777/service_eazypic
+          build-args: |
+            PHOTOSHOP_CLIENT_ID=${{ secrets.PHOTOSHOP_CLIENT_ID }}
+            PHOTOSHOP_CLIENT_SECRET=${{ secrets.PHOTOSHOP_CLIENT_SECRET }}
+            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
+            HEYGEN_API_KEY=${{ secrets.HEYGEN_API_KEY }}
+            AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_REGION=${{ secrets.AWS_REGION }}
+            AWS_BUCKET=${{ secrets.AWS_BUCKET }}
+            AWS_IMAGE_KEY=${{ secrets.AWS_IMAGE_KEY }}
 
   deploy:
     needs: build
