@@ -5,7 +5,7 @@ FROM messense/rust-musl-cross:x86_64-musl as builder
 ENV PORT=1010
 
 # Set the working directory
-WORKDIR /usr/src/service_docurust
+WORKDIR /usr/src/service_eazypic
 
 # Copy the application code
 COPY . .
@@ -14,7 +14,7 @@ COPY . .
 RUN chmod +x setup.sh && ./setup.sh
 
 # Set the entry point for the container
-ENTRYPOINT ["/usr/src/service_docurust/target/x86_64-unknown-linux-musl/release/service_docurust"]
+ENTRYPOINT ["/usr/src/service_eazypic/target/x86_64-unknown-linux-musl/release/service_eazypic"]
 
 # Expose the port the server is running on
 EXPOSE 1010
