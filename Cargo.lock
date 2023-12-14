@@ -227,9 +227,9 @@ checksum = "d468802bab17cbc0cc575e9b053f41e72aa36bfa6b7f55e3529ffa43161b97fa"
 
 [[package]]
 name = "aws-config"
-version = "1.0.3"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "004dc45f6b869e6a70725df448004a720b7f52f6607d55d8815cbd5448f86def"
+checksum = "11382bd8ac4c6c182a9775990935f96c916a865f1414486595f18eb8cfa9d90b"
 dependencies = [
  "aws-credential-types",
  "aws-http",
@@ -258,9 +258,9 @@ dependencies = [
 
 [[package]]
 name = "aws-credential-types"
-version = "1.0.3"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "cfa51c87f10211f37cd78e6d01d6f18b3f96a086906ed361d11e04ac53e29508"
+checksum = "70a1629320d319dc715c6189b172349186557e209d2a7b893ff3d14efd33a47c"
 dependencies = [
  "aws-smithy-async",
  "aws-smithy-runtime-api",
@@ -270,15 +270,15 @@ dependencies = [
 
 [[package]]
 name = "aws-endpoint"
-version = "0.60.0"
+version = "0.60.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "fee6509c2eb6409945ab71466d7ef184f361145708f758dfbe6a32fde30b8f03"
+checksum = "d03dba9ec87bedae4ea6b9b562222ec375ecd058224488232874bfcaf127e7e0"
 
 [[package]]
 name = "aws-http"
-version = "0.60.0"
+version = "0.60.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "361c4310fdce94328cc2d1ca0c8a48c13f43009c61d3367585685a50ca8c66b6"
+checksum = "30e4199d5d62ab09be6a64650c06cc5c4aa45806fed4c74bc4a5c8eaf039a6fa"
 dependencies = [
  "aws-smithy-runtime-api",
  "aws-smithy-types",
@@ -292,9 +292,9 @@ dependencies = [
 
 [[package]]
 name = "aws-runtime"
-version = "1.0.3"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ce0953f7fc1c4428511345e28ea3e98c8b59c9e91eafae30bf76d71d70642693"
+checksum = "87116d357c905b53f1828d15366363fd27b330a0393cbef349e653f686d36bad"
 dependencies = [
  "aws-credential-types",
  "aws-http",
@@ -344,9 +344,9 @@ dependencies = [
 
 [[package]]
 name = "aws-sdk-sso"
-version = "1.6.0"
+version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "86575c7604dcdb583aba3390200e5333d8e4fe597bad54f57b190aaf4fac9771"
+checksum = "86b1779a72c60d45e5699512310d7f6fb965fecc8f7419ce1b993b716f0026fd"
 dependencies = [
  "aws-credential-types",
  "aws-http",
@@ -360,15 +360,16 @@ dependencies = [
  "aws-types",
  "bytes",
  "http 0.2.11",
- "regex",
+ "once_cell",
+ "regex-lite",
  "tracing",
 ]
 
 [[package]]
 name = "aws-sdk-ssooidc"
-version = "1.6.0"
+version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "bef0d7c1d0730adb5e85407174483a579e39576e0f4350ecd0fac69ec1217b1b"
+checksum = "90fb130cc2a21a2a6ef2b7730565cffb447aebb18c9a468e56ffb5cc97bfc077"
 dependencies = [
  "aws-credential-types",
  "aws-http",
@@ -382,15 +383,16 @@ dependencies = [
  "aws-types",
  "bytes",
  "http 0.2.11",
- "regex",
+ "once_cell",
+ "regex-lite",
  "tracing",
 ]
 
 [[package]]
 name = "aws-sdk-sts"
-version = "1.6.0"
+version = "1.7.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "f45778089751d5aa8645a02dd60865fa0eea39f00be5db2c7779bc50b83db19a"
+checksum = "d27259dcd835b6069260edec09487383f40f45c1cc7f02c74258eff8a22555a4"
 dependencies = [
  "aws-credential-types",
  "aws-http",
@@ -405,15 +407,16 @@ dependencies = [
  "aws-smithy-xml",
  "aws-types",
  "http 0.2.11",
- "regex",
+ "once_cell",
+ "regex-lite",
  "tracing",
 ]
 
 [[package]]
 name = "aws-sigv4"
-version = "1.0.3"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "b6bcbad6e0f130232b22e4b4e28834348ce5b79c23b5059b387c08fd0dc8f876"
+checksum = "d222297ca90209dc62245f0a490355795f29de362eb5c19caea4f7f55fe69078"
 dependencies = [
  "aws-credential-types",
  "aws-smithy-eventstream",
@@ -429,7 +432,6 @@ dependencies = [
  "once_cell",
  "p256",
  "percent-encoding",
- "regex",
  "ring",
  "sha2",
  "subtle",
@@ -596,9 +598,9 @@ dependencies = [
 
 [[package]]
 name = "aws-types"
-version = "1.0.3"
+version = "1.1.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "faa59f6f26a3472ca2ce7e7802d037a0a9a7ac23de5761eadd9b68f31ac4fd21"
+checksum = "4e5d5ee29077e0fcd5ddd0c227b521a33aaf02434b7cdba1c55eec5c1f18ac47"
 dependencies = [
  "aws-credential-types",
  "aws-smithy-async",
@@ -2664,15 +2666,6 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "ff011a302c396a5197692431fc1948019154afc178baf7d8e37367442a4601cf"
 
 [[package]]
-name = "openssl-src"
-version = "300.2.1+3.2.0"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "3fe476c29791a5ca0d1273c697e96085bbabbbea2ef7afd5617e78a4b40332d3"
-dependencies = [
- "cc",
-]
-
-[[package]]
 name = "openssl-sys"
 version = "0.9.97"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -2680,7 +2673,6 @@ checksum = "c3eaad34cdd97d81de97964fc7f29e2d104f483840d906ef56daa1912338460b"
 dependencies = [
  "cc",
  "libc",
- "openssl-src",
  "pkg-config",
  "vcpkg",
 ]
@@ -3390,6 +3382,12 @@ dependencies = [
 ]
 
 [[package]]
+name = "regex-lite"
+version = "0.1.5"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "30b661b2f27137bdbc16f00eda72866a92bb28af1753ffbd56744fb6e2e9cd8e"
+
+[[package]]
 name = "regex-syntax"
 version = "0.8.2"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -3410,7 +3408,6 @@ version = "0.11.22"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "046cd98826c46c2ac8ddecae268eb5c2e58628688a5fc7a2643704a73faba95b"
 dependencies = [
- "async-compression",
  "base64 0.21.5",
  "bytes",
  "encoding_rs",
@@ -3708,9 +3705,9 @@ dependencies = [
 
 [[package]]
 name = "sea-orm"
-version = "0.12.9"
+version = "0.12.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c5181eedee8ad0d002d2a288600140fe9937581c4668426a4ff1295c14c736cf"
+checksum = "cf9195a2b2a182cbee3f76cf2a97c20204022f91259bdf8a48b537788202775b"
 dependencies = [
  "async-stream",
  "async-trait",
@@ -3736,9 +3733,9 @@ dependencies = [
 
 [[package]]
 name = "sea-orm-macros"
-version = "0.12.6"
+version = "0.12.10"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "816183a751bf9c22087679b20b6142da0b5c6d8981835ebb7b99bf1bf924640a"
+checksum = "66c6acfe3d49625c679955c7e7e7cd2d72b512a5c77bcd535a74aa41590b9f28"
 dependencies = [
  "heck",
  "proc-macro2",
