@@ -1,5 +1,6 @@
 [workspace]
 members = [
+    "services/service_docurust",
     "services/service_eazypic",
     "services/service_eazymana",
     "modules/module_aws",
