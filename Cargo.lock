@@ -2146,6 +2146,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "lib_pdfgems"
+version = "0.1.0"
+dependencies = [
+ "aws-config",
+ "aws-endpoint",
+ "aws-sdk-s3",
+ "axum",
+ "axum-server",
+ "base64 0.21.5",
+ "dotenv",
+ "futures",
+ "lib_errors",
+ "lib_sharedstate",
+ "openssl-sys",
+ "pdf_gems",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tokio",
+ "tokio-stream",
+ "tower",
+ "tower-http",
+]
+
+[[package]]
 name = "lib_sharedstate"
 version = "0.1.0"
 dependencies = [
@@ -2768,7 +2794,6 @@ dependencies = [
 [[package]]
 name = "pdf_gems"
 version = "0.1.0"
-source = "git+https://vanha777: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@github.com/Strong-Room/RustPDFToolkit.git?branch=main#7c008ad0f0cafd76966d3958a6e6ec2ce034c452"
 dependencies = [
  "base64 0.21.5",
  "lopdf",
@@ -3935,32 +3960,6 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
-]
-
-[[package]]
-name = "service_docurust"
-version = "0.1.0"
-dependencies = [
- "aws-config",
- "aws-endpoint",
- "aws-sdk-s3",
- "axum",
- "axum-server",
- "base64 0.21.5",
- "dotenv",
- "futures",
- "lib_errors",
- "lib_sharedstate",
- "openssl-sys",
- "pdf_gems",
- "reqwest",
- "serde",
- "serde_json",
- "tempfile",
- "tokio",
- "tokio-stream",
- "tower",
- "tower-http",
 ]
 
 [[package]]

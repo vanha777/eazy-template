@@ -10,12 +10,12 @@ members = [
     "common/common_heygen",
     "libaries/lib_errors",
     "libaries/lib_sharedstate",
+    "libaries/lib_pdfgems"
     ]
 
 [workspace.dependencies]
 openssl-sys = { version = "0.9.96", features = ["vendored"] }
-futures = "0.3"
-pdf_gems = {git="https://vanha777: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@github.com/Strong-Room/RustPDFToolkit.git", branch="main"}
+futures = "0.3.28"
 tokio = { version = "1.31.0", features = ["full"] }
 serde = { version ="1.0.187", features = ["derive"] }
 serde_json = "1.0.104"

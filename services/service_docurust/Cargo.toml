@@ -1,12 +1,12 @@
 [package]
-name = "service_docurust"
+name = "lib_pdfgems"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-pdf_gems.workspace = true
+pdf_gems = {path = "../../libaries/lib_pdfgems"}
 lib_errors = {path = "../../libaries/lib_errors"}
 lib_sharedstate={path = "../../libaries/lib_sharedstate"}
 tokio.workspace = true
