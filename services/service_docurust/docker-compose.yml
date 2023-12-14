@@ -1,0 +1,12 @@
+version: '3.8'
+services:
+  api:
+    image: vanha777/service_docurust
+    restart: always
+    build:
+        context: .
+        dockerfile: Dockerfile
+    ports:
+      - "3070:3070"
+    environment:
+      - PORT=3070

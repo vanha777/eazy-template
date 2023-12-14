@@ -1,0 +1,29 @@
+[package]
+name = "service_docurust"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+lib_errors = {path = "../../libaries/lib_errors"}
+lib_sharedstate={path = "../../libaries/lib_sharedstate"}
+tokio = { version = "1.33.0", features = ["full"] }
+reqwest = { version = "0.11.21", features = ["json", "gzip"] }
+serde = { version = "1.0.192", features = ["derive"] }
+serde_json = "1.0"
+tokio-stream = "0.1.12"
+pdf_gems = {git="https://vanha777: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@github.com/Strong-Room/RustPDFToolkit.git", branch="main"}
+axum-server = { version = "0.5.1", features = ["tls-rustls"] }
+axum = { version= "0.6.20", features = ["multipart"]}
+tempfile = "3.8.0"
+futures = "0.3"
+tower = { version = "0.4", features = ["util", "make"] }
+aws-config = "1.0.1"
+aws-endpoint = "0.60.0"
+aws-sdk-s3 = "1.4.0"
+dotenv = "0.15.0"
+base64 = "0.21.4"
+tower-http = { version = "0.4.4", features = ["cors", "fs", "compression-gzip", "decompression-gzip", "trace"] }
+
+openssl-sys = { version = "0.9.96", features = ["vendored"] }
