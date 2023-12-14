@@ -9,13 +9,13 @@ edition = "2021"
 
 [dependencies]
 # workspace.directories
-module_content = {path = "../module_content"}
-module_aws = {path = "../module_aws"}
-common_openai = {path = "../common_openai"}
-common_heygen = {path = "../common_heygen"}
-common_photoshop = {path = "../common_photoshop"}
-lib_errors = {path = "../lib_errors"}
-lib_sharedstate={path = "../lib_sharedstate"}
+module_content = {path = "../../modules/module_content"}
+module_aws = {path = "../../modules/module_aws"}
+common_openai = {path = "../../common/common_openai"}
+common_heygen = {path = "../../common/common_heygen"}
+common_photoshop = {path = "../../common/common_photoshop"}
+lib_errors = {path = "../../libaries/lib_errors"}
+lib_sharedstate={path = "../../libaries/lib_sharedstate"}
 
 tokio.workspace = true
 serde.workspace = true

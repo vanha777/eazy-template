@@ -6,11 +6,11 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-common_photoshop={path = "../common_photoshop"}
-common_openai={path = "../common_openai"}
-module_aws={path = "../module_aws"}
-lib_errors = {path = "../lib_errors"}
-lib_sharedstate={path = "../lib_sharedstate"}
+common_photoshop={path = "../../common/common_photoshop"}
+common_openai={path = "../../common/common_openai"}
+module_aws={path = "../../modules/module_aws"}
+lib_errors = {path = "../../libaries/lib_errors"}
+lib_sharedstate={path = "../../libaries/lib_sharedstate"}
 serde.workspace = true
 serde_json.workspace = true
 async-openai.workspace = true

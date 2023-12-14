@@ -1,14 +1,14 @@
 [workspace]
 members = [
-    "service_eazypic",
-    "service_eazymana",
-    "module_aws",
-    "module_content",
-    "common_photoshop",
-    "common_openai",
-    "common_heygen",
-    "lib_errors",
-    "lib_sharedstate",
+    "services/service_eazypic",
+    "services/service_eazymana",
+    "modules/module_aws",
+    "modules/module_content",
+    "common/common_photoshop",
+    "common/common_openai",
+    "common/common_heygen",
+    "libaries/lib_errors",
+    "libaries/lib_sharedstate",
     ]
 
 [workspace.dependencies]

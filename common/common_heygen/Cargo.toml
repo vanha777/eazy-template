@@ -7,8 +7,8 @@ edition = "2021"
 
 [dependencies]
 common_openai = {path = "../common_openai"}
-lib_errors = {path = "../lib_errors"}
-lib_sharedstate={path = "../lib_sharedstate"}
+lib_errors = {path = "../../libaries/lib_errors"}
+lib_sharedstate={path = "../../libaries/lib_sharedstate"}
 serde.workspace = true
 serde_json.workspace = true
 async-openai.workspace = true

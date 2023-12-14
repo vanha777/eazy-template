@@ -6,8 +6,8 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-lib_errors = {path = "../lib_errors"}
-lib_sharedstate={path = "../lib_sharedstate"}
+lib_errors = {path = "../../libaries/lib_errors"}
+lib_sharedstate={path = "../../libaries/lib_sharedstate"}
 axum.workspace = true
 chrono.workspace = true
 rand.workspace = true
