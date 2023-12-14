@@ -2149,9 +2149,6 @@ dependencies = [
 name = "lib_pdfgems"
 version = "0.1.0"
 dependencies = [
- "aws-config",
- "aws-endpoint",
- "aws-sdk-s3",
  "axum",
  "axum-server",
  "base64 0.21.5",
