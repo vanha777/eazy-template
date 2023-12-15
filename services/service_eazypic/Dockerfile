@@ -1,0 +1,29 @@
+# Use the official Rust image as a base
+FROM messense/rust-musl-cross:x86_64-musl as builder
+
+# Environments
+ENV PORT=1010
+
+# Set the working directory
+WORKDIR /usr/src/eazy_template
+
+# Copy the application code
+COPY . .
+
+# # Make the setup script executable and run it
+# RUN chmod +x setup.sh && ./setup.sh
+
+# Make the setup script executable and run it
+RUN chmod +x services/service_eazypic/setup.sh && ./services/service_eazypic/setup.sh
+
+# Final stage/image
+FROM scratch
+
+# Copy the built binary from the builder stage
+COPY --from=builder /usr/src/eazy_template/target/x86_64-unknown-linux-musl/release/service_eazypic /service_eazypic
+
+# Set the entry point for the container
+ENTRYPOINT ["/service_eazypic"]
+
+# Expose the port the server is running on
+EXPOSE 1010
