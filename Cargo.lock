@@ -1027,9 +1027,9 @@ dependencies = [
 
 [[package]]
 name = "const-oid"
-version = "0.9.5"
+version = "0.9.6"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "28c122c3980598d243d63d9a704629a2d748d101f278052ff068be5a4423ab6f"
+checksum = "c2459377285ad874054d797f3ccebf984978aa39129f6eafde5cdc8315b612f8"
 
 [[package]]
 name = "convert_case"
@@ -2143,29 +2143,6 @@ version = "0.1.0"
 dependencies = [
  "axum",
  "thiserror",
-]
-
-[[package]]
-name = "lib_pdfgems"
-version = "0.1.0"
-dependencies = [
- "axum",
- "axum-server",
- "base64 0.21.5",
- "dotenv",
- "futures",
- "lib_errors",
- "lib_sharedstate",
- "openssl-sys",
- "pdf_gems",
- "reqwest",
- "serde",
- "serde_json",
- "tempfile",
- "tokio",
- "tokio-stream",
- "tower",
- "tower-http",
 ]
 
 [[package]]
@@ -3957,6 +3934,29 @@ dependencies = [
  "proc-macro2",
  "quote",
  "syn 1.0.109",
+]
+
+[[package]]
+name = "service_docurust"
+version = "0.1.0"
+dependencies = [
+ "axum",
+ "axum-server",
+ "base64 0.21.5",
+ "dotenv",
+ "futures",
+ "lib_errors",
+ "lib_sharedstate",
+ "openssl-sys",
+ "pdf_gems",
+ "reqwest",
+ "serde",
+ "serde_json",
+ "tempfile",
+ "tokio",
+ "tokio-stream",
+ "tower",
+ "tower-http",
 ]
 
 [[package]]
