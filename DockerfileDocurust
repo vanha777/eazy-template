@@ -13,8 +13,11 @@ COPY . .
 # # Make the setup script executable and run it
 # RUN chmod +x setup.sh && ./setup.sh
 
+# Copy the setup script from the service directory to the workspace root
+COPY services/service_docurust/setup.sh ./setup.sh
+
 # Make the setup script executable and run it
-RUN chmod +x services/service_docurust/setup.sh && ./services/service_docurust/setup.sh
+RUN chmod +x setup.sh && ./setup.sh
 
 # Final stage/image
 FROM scratch
