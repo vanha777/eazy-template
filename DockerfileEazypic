@@ -1,5 +1,5 @@
-# Use the official Rust image as a base
-FROM messense/rust-musl-cross:x86_64-musl as builder
+# Use the official Rust Docker image
+FROM rust:latest as builder
 
 # Install OpenSSL development libraries
 RUN apt-get update && apt-get install -y libssl-dev
