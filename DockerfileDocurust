@@ -1,6 +1,12 @@
 # Use the official Rust image as a base
 FROM messense/rust-musl-cross:x86_64-musl as builder
 
+# Install OpenSSL development libraries
+RUN apt-get update && apt-get install -y libssl-dev
+
+# Set PKG_CONFIG_PATH if necessary
+ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+
 # Environments
 ENV PORT=3070
 
