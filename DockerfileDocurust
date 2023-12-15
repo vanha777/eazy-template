@@ -1,11 +1,5 @@
-# Use the official Rust image as a base
-FROM messense/rust-musl-cross:x86_64-musl as builder
-
-# Install OpenSSL development libraries
-RUN apt-get update && apt-get install -y libssl-dev
-
-# Set PKG_CONFIG_PATH if necessary
-ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+# Use the official Rust Docker image
+FROM rust:latest as builder
 
 # Environments
 ENV PORT=3070
@@ -29,7 +23,7 @@ RUN chmod +x setup.sh && ./setup.sh
 FROM scratch
 
 # Copy the built binary from the builder stage
-COPY --from=builder /usr/src/eazy_template/target/x86_64-unknown-linux-musl/release/service_docurust /service_docurust
+COPY --from=builder /usr/src/eazy_template/target/release/service_docurust /service_docurust
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_docurust"]

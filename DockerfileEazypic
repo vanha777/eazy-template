@@ -29,7 +29,7 @@ RUN chmod +x setup.sh && ./setup.sh
 FROM scratch
 
 # Copy the built binary from the builder stage
-COPY --from=builder /usr/src/eazy_template/target/x86_64-unknown-linux-musl/release/service_eazypic /service_eazypic
+COPY --from=builder /usr/src/eazy_template/target/release/service_eazypic /service_eazypic
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_eazypic"]
