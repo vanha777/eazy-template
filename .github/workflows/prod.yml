@@ -41,8 +41,8 @@ jobs:
       - name: Build and push Docker image for service_docurust
         uses: docker/build-push-action@v2
         with:
-          context: ./services/service_docurust
-          file: ./services/service_docurust/Dockerfile
+          context: .
+          file: ./DockerfileDocurust
           push: true
           tags: vanha777/service_docurust
           # build-args: |
@@ -51,8 +51,8 @@ jobs:
       - name: Build and push Docker image for service_eazypic
         uses: docker/build-push-action@v2
         with:
-          context: ./services/service_eazpic
-          file: ./services/service_eazypic/Dockerfile
+          context: .
+          file: ./DockerfileEazypic
           push: true
           tags: vanha777/service_eazypic
           build-args: |
