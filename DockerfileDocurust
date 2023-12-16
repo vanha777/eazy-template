@@ -20,7 +20,7 @@ RUN chmod +x ./services/service_docurust/setup.sh && ./services/service_docurust
 # RUN chmod +x setup.sh && ./setup.sh
 
 # Final stage/image
-FROM alpine:latest
+FROM ubuntu:latest
 
 # Install wkhtmltopdf
 RUN apk --no-cache add wkhtmltopdf
