@@ -5,7 +5,7 @@ FROM rust:latest as builder
 ENV PORT=3070
 
 # Set the working directory
-WORKDIR /usr/src/eazy_template
+WORKDIR /service_docurust
 
 # Copy the application code
 COPY . .
@@ -20,13 +20,20 @@ RUN chmod +x ./services/service_docurust/setup.sh && ./services/service_docurust
 # RUN chmod +x setup.sh && ./setup.sh
 
 # Final stage/image
-FROM scratch
+FROM alpine:latest
+
+# Install wkhtmltopdf
+RUN apk --no-cache add wkhtmltopdf
 
 # Copy the built binary from the builder stage
-COPY --from=builder /usr/src/eazy_template/target/release/service_docurust /service_docurust
+COPY --from=builder /service_docurust/target/release /service_docurust
+
+# Ensure the binary is executable
+RUN chmod +x /service_docurust
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_docurust"]
 
 # Expose the port the server is running on
 EXPOSE 3070
+

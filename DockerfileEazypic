@@ -11,7 +11,7 @@ ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 ENV PORT=1010
 
 # Set the working directory
-WORKDIR /usr/src/eazy_template
+WORKDIR /service_eazypic
 
 # Copy the application code
 COPY . .
@@ -32,7 +32,7 @@ RUN chmod +x ./services/service_eazypic/setup.sh && ./services/service_eazypic/s
 FROM scratch
 
 # Copy the built binary from the builder stage
-COPY --from=builder /usr/src/eazy_template/target/release/service_eazypic /service_eazypic
+COPY --from=builder /service_eazypic/target/release /service_eazypic
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_eazypic"]
