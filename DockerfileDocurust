@@ -1,42 +1,31 @@
-# Use the official Rust image as a base
+# Stage 1: Build the Rust application
 FROM messense/rust-musl-cross:x86_64-musl as builder
-
-# Environments
 ENV PORT=3070
-
-# Set the working directory
 WORKDIR /usr/src/eazy-template
-
-# Copy the application code
 COPY . .
-
-# Make the setup script executable and run it
 RUN chmod +x ./services/service_docurust/setup.sh && ./services/service_docurust/setup.sh
 
-# # Copy the setup script from the service directory to the workspace root
-# COPY services/service_docurust/setup.sh ./setup.sh
+# Stage 2: Intermediate stage for wkhtmltopdf installation
 
-# # Make the setup script executable and run it
-# RUN chmod +x setup.sh && ./setup.sh
+# # Stage to install wkhtmltopdf
+# FROM debian:buster-slim as wkhtmltopdf-installer
+# RUN apt-get update && apt-get install -y wkhtmltopdf
+# # No need to manually handle dependencies
 
 # Final stage/image
-FROM scratch
+FROM ubuntu:latest
 
-# # Install wkhtmltopdf
-# RUN apt-get install -y wkhtmltopdf
+# Install wkhtmltopdf and its dependencies
+RUN apt-get update && apt-get install -y wkhtmltopdf
 
 # Copy the built binary from the builder stage
-COPY --from=builder /usr/src/eazy-template/target/release/service_docurust /service_docurust
-
-# Copy CA certificates from the builder stage
-COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
-
-# # Copy wkhtmltopdf and its dependencies
-# COPY --from=builder /usr/local/bin/wkhtmltopdf /usr/local/bin/
+COPY --from=builder /usr/src/eazy-template/target/x86_64-unknown-linux-musl/release/service_docurust /usr/local/bin/service_docurust
 
 # Set the entry point for the container
-ENTRYPOINT ["/service_docurust"]
+ENTRYPOINT ["/usr/local/bin/service_docurust"]
 
 # Expose the port the server is running on
 EXPOSE 3070
+
+
 
