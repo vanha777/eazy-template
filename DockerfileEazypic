@@ -1,17 +1,11 @@
 # Use the official Rust Docker image
 FROM rust:latest as builder
 
-# Install OpenSSL development libraries
-RUN apt-get update && apt-get install -y libssl-dev
-
-# Set PKG_CONFIG_PATH if necessary
-ENV PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-
 # Environments
 ENV PORT=1010
 
 # Set the working directory
-WORKDIR /service_eazypic
+WORKDIR /usr/src/app
 
 # Copy the application code
 COPY . .
@@ -32,7 +26,7 @@ RUN chmod +x ./services/service_eazypic/setup.sh && ./services/service_eazypic/s
 FROM scratch
 
 # Copy the built binary from the builder stage
-COPY --from=builder /service_eazypic/target/release /service_eazypic
+COPY --from=builder /usr/src/app/target/release/service_eazypic /service_eazypic
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_eazypic"]
