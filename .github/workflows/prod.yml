@@ -55,17 +55,21 @@ jobs:
           file: ./DockerfileEazypic
           push: true
           tags: vanha777/service_eazypic
-          build-args: |
-            PHOTOSHOP_CLIENT_ID=${{ secrets.PHOTOSHOP_CLIENT_ID }}
-            PHOTOSHOP_CLIENT_SECRET=${{ secrets.PHOTOSHOP_CLIENT_SECRET }}
-            OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}
-            HEYGEN_API_KEY=${{ secrets.HEYGEN_API_KEY }}
-            AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-            AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-            AWS_REGION=${{ secrets.AWS_REGION }}
-            AWS_BUCKET=${{ secrets.AWS_BUCKET }}
-            AWS_IMAGE_KEY=${{ secrets.AWS_IMAGE_KEY }}
-            
+          # build-args: |
+          #   PHOTOSHOP_CLIENT_ID=${{ secrets.PHOTOSHOP_CLIENT_ID }}
+      
+      - name: Create environment file
+        run: |
+          echo "PHOTOSHOP_CLIENT_ID=${{ secrets.PHOTOSHOP_CLIENT_ID }}" > service_eazypic.env
+          echo "PHOTOSHOP_CLIENT_SECRET=${{ secrets.PHOTOSHOP_CLIENT_SECRET }}" >> service_eazypic.env
+          echo "OPENAI_API_KEY=${{ secrets.OPENAI_API_KEY }}" >> service_eazypic.env
+          echo "HEYGEN_API_KEY=${{ secrets.HEYGEN_API_KEY }}" >> service_eazypic.env
+          echo "AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}" >> service_eazypic.env
+          echo "AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}" >> service_eazypic.env
+          echo "AWS_REGION=${{ secrets.AWS_REGION }}" >> service_eazypic.env
+          echo "AWS_BUCKET=${{ secrets.AWS_BUCKET }}" >> service_eazypic.env
+          echo "AWS_IMAGE_KEY=${{ secrets.AWS_IMAGE_KEY }}" >> service_eazypic.env
+          
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -99,6 +103,9 @@ jobs:
 
       - name: Copy docker-compose.yml to droplet service_eazypic
         run: sshpass -v -p ${{ secrets.DROPLET_PASSWORD }} scp -o StrictHostKeyChecking=no ./services/service_eazypic/docker-compose.yml root@${{ vars.DROPLET_IP_EAZYPIC }}:~
+        
+      - name: Transfer .env file to the server
+        run: sshpass -v -p ${{ secrets.DROPLET_PASSWORD }} scp -o StrictHostKeyChecking=no service_eazypic.env root@${{ vars.DROPLET_IP_EAZYPIC }}:~
 
       - name: Deploy service_eazypic
         uses: appleboy/ssh-action@master
@@ -107,15 +114,6 @@ jobs:
           username: root
           password: ${{ secrets.DROPLET_PASSWORD }}
           script: |
-            export PHOTOSHOP_CLIENT_ID="${{ secrets.PHOTOSHOP_CLIENT_ID }}"
-            export PHOTOSHOP_CLIENT_SECRET="${{ secrets.PHOTOSHOP_CLIENT_SECRET }}"
-            export OPENAI_API_KEY="${{ secrets.OPENAI_API_KEY }}"
-            export HEYGEN_API_KEY="${{ secrets.HEYGEN_API_KEY }}"
-            export AWS_ACCESS_KEY_ID="${{ secrets.AWS_ACCESS_KEY_ID }}"
-            export AWS_SECRET_ACCESS_KEY="${{ secrets.AWS_SECRET_ACCESS_KEY }}"
-            export AWS_REGION="${{ secrets.AWS_REGION }}"
-            export AWS_BUCKET="${{ secrets.AWS_BUCKET }}"
-            export AWS_IMAGE_KEY="${{ secrets.AWS_IMAGE_KEY }}"
             cd ~
             docker-compose down
             docker-compose pull

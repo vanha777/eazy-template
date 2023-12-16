@@ -2,6 +2,8 @@ version: '3.8'
 services:
   api:
     image: vanha777/service_eazypic:latest
+    env_file:
+      - service_eazypic.env
     restart: always
     build:
         context: .
