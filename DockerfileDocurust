@@ -23,7 +23,7 @@ RUN chmod +x ./services/service_docurust/setup.sh && ./services/service_docurust
 FROM scratch
 
 # Install wkhtmltopdf
-RUN apk --no-cache add wkhtmltopdf
+RUN apt-get install -y wkhtmltopdf
 
 # Copy the built binary from the builder stage
 COPY --from=builder /service_docurust/target/release /service_docurust
