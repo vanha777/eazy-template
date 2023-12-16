@@ -28,9 +28,6 @@ FROM scratch
 # Copy the built binary from the builder stage
 COPY --from=builder /service_docurust/target/release /service_docurust
 
-# Ensure the binary is executable
-RUN chmod +x /service_docurust
-
 # Set the entry point for the container
 ENTRYPOINT ["/service_docurust"]
 
