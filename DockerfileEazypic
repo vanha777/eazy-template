@@ -1,7 +1,7 @@
 # Use the official Rust image as a base
 FROM messense/rust-musl-cross:x86_64-musl as builder
 
-# Environments
+# Set environment variables from build arguments
 ENV PORT=1010
 
 # Set the working directory
@@ -9,15 +9,6 @@ WORKDIR /usr/src/eazy-template
 
 # Copy the application code
 COPY . .
-
-# # Make the setup script executable and run it
-# RUN chmod +x setup.sh && ./setup.sh
-
-# # Copy the setup script from the service directory to the workspace root
-# COPY services/service_eazypic/setup.sh ./setup.sh
-
-# # Make the setup script executable and run it
-# RUN chmod +x setup.sh && ./setup.sh
 
 # Make the setup script executable and run it
 RUN chmod +x ./services/service_eazypic/setup.sh && ./services/service_eazypic/setup.sh
