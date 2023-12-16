@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   api:
-    image: vanha777/service_docurust
+    image: vanha777/service_docurust:latest
     restart: always
     build:
         context: .

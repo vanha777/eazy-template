@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   api:
-    image: vanha777/service_eazypic
+    image: vanha777/service_eazypic:latest
     restart: always
     build:
         context: .
