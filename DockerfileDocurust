@@ -31,8 +31,8 @@ COPY --from=builder /usr/src/eazy-template/target/release/service_docurust /serv
 # Copy CA certificates from the builder stage
 COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
 
-# Copy wkhtmltopdf and its dependencies
-COPY --from=builder /usr/local/bin/wkhtmltopdf /usr/local/bin/
+# # Copy wkhtmltopdf and its dependencies
+# COPY --from=builder /usr/local/bin/wkhtmltopdf /usr/local/bin/
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_docurust"]
