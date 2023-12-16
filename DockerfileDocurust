@@ -1,11 +1,11 @@
-# Use the official Rust Docker image
-FROM rust:latest as builder
+# Use the official Rust image as a base
+FROM messense/rust-musl-cross:x86_64-musl as builder
 
 # Environments
 ENV PORT=3070
 
 # Set the working directory
-WORKDIR /usr/src/app
+WORKDIR /usr/src/eazy-template
 
 # Copy the application code
 COPY . .
@@ -26,7 +26,13 @@ FROM scratch
 # RUN apt-get install -y wkhtmltopdf
 
 # Copy the built binary from the builder stage
-COPY --from=builder /usr/src/app/target/release/service_docurust /service_docurust
+COPY --from=builder /usr/src/eazy-template/target/release/service_docurust /service_docurust
+
+# Copy CA certificates from the builder stage
+COPY --from=builder /etc/ssl/certs/ca-certificates.crt /etc/ssl/certs/ca-certificates.crt
+
+# Copy wkhtmltopdf and its dependencies
+COPY --from=builder /usr/local/bin/wkhtmltopdf /usr/local/bin/
 
 # Set the entry point for the container
 ENTRYPOINT ["/service_docurust"]

@@ -14,8 +14,7 @@ members = [
     ]
 
 [workspace.dependencies]
-openssl-sys = { version = "0.9.96", features = ["vendored"] }
-futures = "0.3.28"
+futures = "0.3.29"
 tokio = { version = "1.31.0", features = ["full"] }
 serde = { version ="1.0.187", features = ["derive"] }
 serde_json = "1.0.104"
@@ -57,3 +56,4 @@ bb8-postgres ="0.8.0"
 uuid = "1.4.1"
 # Internal crate
 async-openai = "0.17.0"
+openssl-sys = { version = "0.9.96", features = ["vendored"] }

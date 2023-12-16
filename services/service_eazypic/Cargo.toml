@@ -61,5 +61,6 @@ async-openai.workspace = true
 
 [build-dependencies]
 # cc.workspace = true
+openssl-sys = { version = "0.9.96", features = ["vendored"] }
 
 [dev-dependencies]
