@@ -5,9 +5,6 @@ services:
     env_file:
       - service_eazypic.env
     restart: always
-    build:
-        context: .
-        dockerfile: Dockerfile
     ports:
       - "1010:1010"
     environment:

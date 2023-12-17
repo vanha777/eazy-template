@@ -3,9 +3,6 @@ services:
   api:
     image: vanha777/service_docurust:latest
     restart: always
-    build:
-        context: .
-        dockerfile: Dockerfile
     ports:
       - "3070:3070"
     environment:
