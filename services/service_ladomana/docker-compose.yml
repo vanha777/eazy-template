@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  api:
+    image: vanha777/service_ladomana:latest
+    env_file:
+      - service_eazypic.env
+    restart: always
+    ports:
+      - "1010:1010"
+    environment:
+      - PORT=1010

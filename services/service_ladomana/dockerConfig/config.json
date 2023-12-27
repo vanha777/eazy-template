@@ -1,0 +1,293 @@
+{
+    "integration_id": "default",
+    "format": "mobile",
+    "content_tag": [
+      "news",
+      "hot",
+      "anouncements"
+    ],
+    "version": "1",
+    "template_id": "f78f0c83027d4a7b98f0e738be28c43e",
+    "video_id": "f78f0c83027d4a7b98f0e738be28c43e",
+    "scenes": [
+      {
+        "name": "introduction",
+        "variables": [
+          {
+              "name": "header",
+              "properties": [
+                  {
+                      "default": "24 Hours News TV Channel",
+                      "name": "text"
+                  }
+              ],
+              "type": "text"
+          },
+          {
+              "name": "logo",
+              "properties": [
+                  {
+                      "default": "https://files.movio.la/pacific/resource/image/0ab2107c4d774628bcaa779f7aaec32c/e2473c11f43f488381cbdb3f2f4015f1.png?Expires=1697940300&Signature=oc0GhwIDE~QVqKP02hH4UR7tHlW7lRpNHAgNe4oR3tX4Qv3kDj~8p6GkA7DQpx2iqqyccWT7spNtAWs3euWFyksZ75OEApoJTfn7~VnsIRxhb8u30rOquhPj0vQNi~QR3e77QsYUGs8YXYwRtwpxjS5s1FTymTXVIEURHuuT29dihSzi1mY9lVYdO98sUkfBX86VOjYzpekkKLdJwcFt4WK1i-k45XFC2udHzT-Cwlf3bQoei14buvdEFotm4z2P1jCHbsXoVJx9bjrX60VlfQHB-y-bHqt9sfz2ck9b2Y3yFkC17SgY9y2KqUfhAPN1EncATSBqv7JS62zEd0nQbA__&Key-Pair-Id=K49TZTO9GZI6K",
+                      "name": "link"
+                  },
+                  {
+                      "default": "cover",
+                      "name": "fit"
+                  }
+              ],
+              "type": "image"
+          },
+          {
+              "name": "title_2",
+              "properties": [
+                  {
+                      "default": "News",
+                      "name": "text"
+                  }
+              ],
+              "type": "text"
+          },
+          {
+              "name": "title_1",
+              "properties": [
+                  {
+                      "default": "Social Public",
+                      "name": "text"
+                  }
+              ],
+              "type": "text"
+          },
+          {
+              "name": "photar_0",
+              "properties": [
+                  {
+                      "default": "eeea848acfee4327aa0314ac89ed4d85",
+                      "name": "id"
+                  },
+                  {
+                      "default": "Bạn nghĩ bạn là chuyên gia về truyền thông xã hội? Đáng buồn!. ",
+                      "name": "text"
+                  },
+                  {
+                      "default": "331f1cc78737475b946079cb3d2f5ffc",
+                      "name": "voice_id"
+                  }
+              ],
+              "type": "photar"
+          },
+          {
+              "name": "video_0",
+              "properties": [
+                  {
+                      "default": "https://files.movio.la/pacific/resource/video/0ab2107c4d774628bcaa779f7aaec32c/500a0686d42842cf90ff7801e1709a12.mp4?Expires=1697940301&Signature=CsRGi~IsdB-pIk8HbrBb3r-HWjsxs1E~qbxIXOmsT8SKgs654SNkvBH4wXXf1tK-pga08zQUltES4R3Rk4xk65zU-CmRfi3VGXL72916cBNHnIvPK~qBCdYMuovDO0Qz8-ZoGhUucBgiwacfmdbHsJwFD5L38laiqlJE01PDfNXVR15XERbdzsMHVWow8nhiXRdCKk61XGnmE0WK5EgJtKvc~9jOiB1hvEzJSgewnPMeaZpHbtrfXQmw04vgNPvrSZ5c5TEW0ZqIX0sZBiYiAZJ86sAyMO87I~6s2Imv0DPSHg5BWncQVwPN5gUR9Res13Rp8WoHS~QXQcs0q7Fx0Q__&Key-Pair-Id=K49TZTO9GZI6K",
+                      "name": "link"
+                  },
+                  {
+                      "default": "none",
+                      "name": "play_style"
+                  }
+              ],
+              "type": "video"
+          }
+      ]
+      },
+      {
+        "name": "body",
+        "positions": [
+          {
+            "position": 1,
+            "name": "set_id_nk1",
+            "value": null
+          },
+          {
+            "position": 2,
+            "name": "nk_name",
+            "value": null
+          },
+          {
+            "position": 3,
+            "name": "relationship",
+            "value": [
+              {
+                "symbol": "ASC",
+                "description": "Associate"
+              },
+              {
+                "symbol": "BRO",
+                "description": "Brother"
+              },
+              {
+                "symbol": "CGV",
+                "description": "Care giver"
+              },
+              {
+                "symbol": "CHD",
+                "description": "Child"
+              },
+              {
+                "symbol": "DEP",
+                "description": "Handicapped dependent"
+              },
+              {
+                "symbol": "DOM",
+                "description": "Life partner"
+              },
+              {
+                "symbol": "EMC",
+                "description": "Emergency contact"
+              },
+              {
+                "symbol": "EME",
+                "description": "Employee"
+              },
+              {
+                "symbol": "EMR",
+                "description": "Employer"
+              },
+              {
+                "symbol": "EXF",
+                "description": "Extended family"
+              },
+              {
+                "symbol": "FCH",
+                "description": "Foster child"
+              },
+              {
+                "symbol": "FND",
+                "description": "Friend"
+              },
+              {
+                "symbol": "FTH",
+                "description": "Father"
+              },
+              {
+                "symbol": "GCH",
+                "description": "Grandchild"
+              },
+              {
+                "symbol": "GRD",
+                "description": "Guardian"
+              },
+              {
+                "symbol": "GRP",
+                "description": "Grandparent"
+              },
+              {
+                "symbol": "MGR",
+                "description": "Manager"
+              },
+              {
+                "symbol": "MTH",
+                "description": "Mother"
+              },
+              {
+                "symbol": "NCH",
+                "description": "Natural child"
+              },
+              {
+                "symbol": "NON",
+                "description": "None"
+              },
+              {
+                "symbol": "OAD",
+                "description": "Other adult"
+              },
+              {
+                "symbol": "OTH",
+                "description": "Other"
+              },
+              {
+                "symbol": "OWN",
+                "description": "Owner"
+              },
+              {
+                "symbol": "PAR",
+                "description": "Parent"
+              },
+              {
+                "symbol": "SCH",
+                "description": "Stepchild"
+              },
+              {
+                "symbol": "SEL",
+                "description": "Self"
+              },
+              {
+                "symbol": "SIB",
+                "description": "Sibling"
+              },
+              {
+                "symbol": "SIS",
+                "description": "Sister"
+              },
+              {
+                "symbol": "SPO",
+                "description": "Spouse"
+              },
+              {
+                "symbol": "TRA",
+                "description": "Trainer"
+              },
+              {
+                "symbol": "UNK",
+                "description": "Unknown"
+              },
+              {
+                "symbol": "WRD",
+                "description": "Ward of court"
+              }
+            ]
+          },
+          {
+            "position": 5,
+            "name": "phone_number",
+            "value": null
+          }
+        ]
+      },
+      {
+        "name": "the_end",
+        "variables": [
+          {
+            "position": 1,
+            "name": "set_id_al1",
+            "value": null
+          },
+          {
+            "position": 3,
+            "name": "allergy_code_mnemonic_description",
+            "value": null
+          },
+          {
+            "position": 4,
+            "name": "allergy_severity",
+            "value": [
+              {
+                "symbol": "MI",
+                "description": "Mild"
+              },
+              {
+                "symbol": "MO",
+                "description": "Moderate"
+              },
+              {
+                "symbol": "SV",
+                "description": "Severe"
+              },
+              {
+                "symbol": "U",
+                "description": "Unknown"
+              }
+            ]
+          },
+          {
+            "position": 6,
+            "name": "identification_date",
+            "value": null
+          }
+        ]
+      }
+    ],
+    "last_version": null,
+    "delete_at": null
+  }

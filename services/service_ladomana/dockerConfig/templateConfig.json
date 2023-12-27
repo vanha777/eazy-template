@@ -1,0 +1,261 @@
+{
+    "code": 100,
+    "data": {
+        
+        "scenes": [
+            {
+                "variables": [
+                    {
+                        "name": "text_0",
+                        "properties": [
+                            {
+                                "default": "24 Hours News TV Channel",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "image_0",
+                        "properties": [
+                            {
+                                "default": "https://files.movio.la/pacific/resource/image/0ab2107c4d774628bcaa779f7aaec32c/e2473c11f43f488381cbdb3f2f4015f1.png?Expires=1697940300&Signature=oc0GhwIDE~QVqKP02hH4UR7tHlW7lRpNHAgNe4oR3tX4Qv3kDj~8p6GkA7DQpx2iqqyccWT7spNtAWs3euWFyksZ75OEApoJTfn7~VnsIRxhb8u30rOquhPj0vQNi~QR3e77QsYUGs8YXYwRtwpxjS5s1FTymTXVIEURHuuT29dihSzi1mY9lVYdO98sUkfBX86VOjYzpekkKLdJwcFt4WK1i-k45XFC2udHzT-Cwlf3bQoei14buvdEFotm4z2P1jCHbsXoVJx9bjrX60VlfQHB-y-bHqt9sfz2ck9b2Y3yFkC17SgY9y2KqUfhAPN1EncATSBqv7JS62zEd0nQbA__&Key-Pair-Id=K49TZTO9GZI6K",
+                                "name": "link"
+                            },
+                            {
+                                "default": "cover",
+                                "name": "fit"
+                            }
+                        ],
+                        "type": "image"
+                    },
+                    {
+                        "name": "text_1",
+                        "properties": [
+                            {
+                                "default": "News",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "text_2",
+                        "properties": [
+                            {
+                                "default": "Social Public",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "photar_0",
+                        "properties": [
+                            {
+                                "default": "eeea848acfee4327aa0314ac89ed4d85",
+                                "name": "id"
+                            },
+                            {
+                                "default": "Bạn nghĩ bạn là chuyên gia về truyền thông xã hội? Đáng buồn!. ",
+                                "name": "text"
+                            },
+                            {
+                                "default": "331f1cc78737475b946079cb3d2f5ffc",
+                                "name": "voice_id"
+                            }
+                        ],
+                        "type": "photar"
+                    },
+                    {
+                        "name": "video_0",
+                        "properties": [
+                            {
+                                "default": "https://files.movio.la/pacific/resource/video/0ab2107c4d774628bcaa779f7aaec32c/500a0686d42842cf90ff7801e1709a12.mp4?Expires=1697940301&Signature=CsRGi~IsdB-pIk8HbrBb3r-HWjsxs1E~qbxIXOmsT8SKgs654SNkvBH4wXXf1tK-pga08zQUltES4R3Rk4xk65zU-CmRfi3VGXL72916cBNHnIvPK~qBCdYMuovDO0Qz8-ZoGhUucBgiwacfmdbHsJwFD5L38laiqlJE01PDfNXVR15XERbdzsMHVWow8nhiXRdCKk61XGnmE0WK5EgJtKvc~9jOiB1hvEzJSgewnPMeaZpHbtrfXQmw04vgNPvrSZ5c5TEW0ZqIX0sZBiYiAZJ86sAyMO87I~6s2Imv0DPSHg5BWncQVwPN5gUR9Res13Rp8WoHS~QXQcs0q7Fx0Q__&Key-Pair-Id=K49TZTO9GZI6K",
+                                "name": "link"
+                            },
+                            {
+                                "default": "none",
+                                "name": "play_style"
+                            }
+                        ],
+                        "type": "video"
+                    }
+                ]
+            },
+            {
+                "variables": [
+                    {
+                        "name": "text_3",
+                        "properties": [
+                            {
+                                "default": "www.movio.la",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "text_4",
+                        "properties": [
+                            {
+                                "default": "Read Mo",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "text_5",
+                        "properties": [
+                            {
+                                "default": "a number of people in various contries make alliances demanding world peac",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "text_6",
+                        "properties": [
+                            {
+                                "default": "Saturday, 05 January 2022",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "avatar_0",
+                        "properties": [
+                            {
+                                "default": "Wilson-inshirt-20220722",
+                                "name": "id"
+                            },
+                            {
+                                "default": "Chúng tôi đã giúp doanh nghiệp tiết kiệm hàng trăm giờ với AI, tạo nội dung không giới hạn, và tăng sự tương tác lên đến 300%. Trong 6 tháng qua, chúng tôi thu hút hơn 50 triệu lượt xem.",
+                                "name": "text"
+                            },
+                            {
+                                "default": "331f1cc78737475b946079cb3d2f5ffc",
+                                "name": "voice_id"
+                            }
+                        ],
+                        "type": "avatar"
+                    },
+                    {
+                        "name": "text_7",
+                        "properties": [
+                            {
+                                "default": "BERAKING NEWS",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "video_1",
+                        "properties": [
+                            {
+                                "default": "https://resource.heygen.com/video/e57067aac1654002923102c7b3ba8c8d/1080x1920.mp4",
+                                "name": "link"
+                            },
+                            {
+                                "default": "none",
+                                "name": "play_style"
+                            }
+                        ],
+                        "type": "video"
+                    },
+                    {
+                        "name": "video_2",
+                        "properties": [
+                            {
+                                "default": "https://files.movio.la/pacific/resource/video/0ab2107c4d774628bcaa779f7aaec32c/7fe9a5bc5f8a4ce2be55d86ba26a5f6c.mp4?Expires=1697940301&Signature=mBwmmSawAgeXqdhKKn1aOAqNV5xvp2vd6VAN~oA86XJb1Jx1S97pyyfVlxiwf~na1XZQGAJk0wb56GmEMMF-a2IKf1NL6dn3FOUcajI5oUNexSA~BJ57OUWMuGy2oOWnVumsEGLC6DtqMSqLEXOahmqdQlGsBOJeKK3-NRHm4Ym3YtrLeUVE~m9Ebj6~3tso-SK751Q~eiUfPLw1X5PF~2-wCqLJsUrNZAApdcNYy~a2gePZ4YTdflLhOGRvtRST0gvzp-c1qgnt0QzqRtGr-L4cyLlGwAwfxDogEUDIzJMx4fnSIK8~4hKC69TztgvuISupfRY2JXE9ZDG5uDiZ9w__&Key-Pair-Id=K49TZTO9GZI6K",
+                                "name": "link"
+                            },
+                            {
+                                "default": "none",
+                                "name": "play_style"
+                            }
+                        ],
+                        "type": "video"
+                    }
+                ]
+            },
+            {
+                "variables": [
+                    {
+                        "name": "text_8",
+                        "properties": [
+                            {
+                                "default": "Subscrible to get the first hand news",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "image_1",
+                        "properties": [
+                            {
+                                "default": "https://files.movio.la/pacific/resource/image/admin/eadf7d67aaab4041a983776ab369e543.png?Expires=1697940301&Signature=mfXJtVaV-eO9auGwE4tI0nZihi~Va1e3N3s1Th~n6wKM0tKek41pS9wejfZvPqn00pn7R6QuM-LAmAM2S9En6hLpF6JxnKBkbhArMZ4NaiqNFp9MBDtbkN2-CIMz84hYo84QZOzC~d3ilgTAUKXoTjSMZJhvMdSVDzLc6u1HGP8VnqK3NuBV4urAfYA2lpi9Hzbix62BnzrpcgxH2epSj0ZMxgIu7LeNHyrLsOgkI-v3vJ6mDBeysHFFbOBdub~SkSO97xOfNcdUQci1XtmFDgZ~Yu1KTJ2jwoDHSq9o~N30oU27c9KuY7K3fTg6c363Bmg4FRUEUE-OwZ0wZ5CilQ__&Key-Pair-Id=K49TZTO9GZI6K",
+                                "name": "link"
+                            },
+                            {
+                                "default": "cover",
+                                "name": "fit"
+                            }
+                        ],
+                        "type": "image"
+                    },
+                    {
+                        "name": "text_9",
+                        "properties": [
+                            {
+                                "default": "@movio_official",
+                                "name": "text"
+                            }
+                        ],
+                        "type": "text"
+                    },
+                    {
+                        "name": "avatar_1",
+                        "properties": [
+                            {
+                                "default": "Mark-blueshirt-20220601",
+                                "name": "id"
+                            },
+                            {
+                                "default": "Khả năng sáng tạo của con người? Hạn chế. Với AI, chúng tôi định nghĩa lại tiêu chuẩn. Đừng tự lừa dối mình, bạn cần chúng tôi.",
+                                "name": "text"
+                            },
+                            {
+                                "default": "331f1cc78737475b946079cb3d2f5ffc",
+                                "name": "voice_id"
+                            }
+                        ],
+                        "type": "avatar"
+                    },
+                    {
+                        "name": "video_3",
+                        "properties": [
+                            {
+                                "default": "https://files.movio.la/pacific/resource/video/0ab2107c4d774628bcaa779f7aaec32c/7fe9a5bc5f8a4ce2be55d86ba26a5f6c.mp4?Expires=1697940301&Signature=mBwmmSawAgeXqdhKKn1aOAqNV5xvp2vd6VAN~oA86XJb1Jx1S97pyyfVlxiwf~na1XZQGAJk0wb56GmEMMF-a2IKf1NL6dn3FOUcajI5oUNexSA~BJ57OUWMuGy2oOWnVumsEGLC6DtqMSqLEXOahmqdQlGsBOJeKK3-NRHm4Ym3YtrLeUVE~m9Ebj6~3tso-SK751Q~eiUfPLw1X5PF~2-wCqLJsUrNZAApdcNYy~a2gePZ4YTdflLhOGRvtRST0gvzp-c1qgnt0QzqRtGr-L4cyLlGwAwfxDogEUDIzJMx4fnSIK8~4hKC69TztgvuISupfRY2JXE9ZDG5uDiZ9w__&Key-Pair-Id=K49TZTO9GZI6K",
+                                "name": "link"
+                            },
+                            {
+                                "default": "none",
+                                "name": "play_style"
+                            }
+                        ],
+                        "type": "video"
+                    }
+                ]
+            }
+        ],
+        "template_id": "f78f0c83027d4a7b98f0e738be28c43e",
+        "video_id": "f78f0c83027d4a7b98f0e738be28c43e"
+    },
+    "message": "Success"
+}

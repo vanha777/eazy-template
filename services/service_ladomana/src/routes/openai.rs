@@ -12,7 +12,6 @@ use tower::ServiceBuilder;
 
 pub fn routes() -> Router {
     Router::new()
-        .route("/init", post(handler::authentications::init))
-        .route("/login", post(handler::authentications::login))
-        .route("/register", post(handler::authentications::register))
+        .route("/chat", post(handler::gpt_chat::chat_generate))
+        .route("/image", post(handler::image::image_url_generate))
 }

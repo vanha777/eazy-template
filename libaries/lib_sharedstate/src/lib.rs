@@ -7,7 +7,7 @@ use tokio_postgres::NoTls;
 #[derive(Clone, Debug)]
 pub struct ServerState {
     pub mongo_client: mongodb::Client,
-    pub sql_client: Pool<PostgresConnectionManager<NoTls>>,
+    pub sql_client: mysql_async::Pool,
     pub openai_client: async_openai::Client<async_openai::config::OpenAIConfig>,
     pub heygen_client: String,
     // The AWS SDK clients are designed to be thread-safe and efficient

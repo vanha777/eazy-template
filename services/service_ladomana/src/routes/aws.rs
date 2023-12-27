@@ -12,7 +12,9 @@ use tower::ServiceBuilder;
 
 pub fn routes() -> Router {
     Router::new()
-        .route("/init", post(handler::authentications::init))
-        .route("/login", post(handler::authentications::login))
-        .route("/register", post(handler::authentications::register))
+        .route("/get-upload-link", get(handler::aws::get_image_upload_link))
+        .route(
+            "/get-download-link",
+            post(handler::aws::get_image_download_link),
+        )
 }

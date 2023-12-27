@@ -1,0 +1,13 @@
+{
+    "integration_id": "default",
+    "version": "1",
+    "scenes": [
+        {
+            "unique_name":"uuid",
+            "unique_name":"uuid",
+            "unique_name":"uuid",
+        }
+    ],
+    "last_version": null,
+    "delete_at": null
+  }

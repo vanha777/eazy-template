@@ -1,0 +1,21 @@
+# fly.toml app configuration file generated for black-water-7829 on 2023-09-09T16:06:11+10:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "black-water-7829"
+primary_region = "syd"
+
+[build]
+
+[http_service]
+  internal_port = 8080
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ["app"]
+
+[mounts]
+source="data"
+destination="/data"
