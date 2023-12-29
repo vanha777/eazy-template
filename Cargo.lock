@@ -2207,6 +2207,7 @@ name = "lib_people"
 version = "0.1.0"
 dependencies = [
  "chrono",
+ "mongodb",
  "serde",
  "serde_json",
 ]
@@ -4050,6 +4051,7 @@ dependencies = [
  "dotenv",
  "http-body 1.0.0",
  "lib_errors",
+ "lib_people",
  "lib_sharedstate",
  "mime_guess",
  "module_authentication",

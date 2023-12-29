@@ -17,6 +17,7 @@ common_heygen = {path = "../../common/common_heygen"}
 common_photoshop = {path = "../../common/common_photoshop"}
 lib_errors = {path = "../../libaries/lib_errors"}
 lib_sharedstate={path = "../../libaries/lib_sharedstate"}
+lib_people={path = "../../libaries/lib_people"}
 
 tokio.workspace = true
 serde.workspace = true

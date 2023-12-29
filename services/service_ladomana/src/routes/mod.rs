@@ -1,8 +1,9 @@
-use crate::handler;
 pub mod authentications;
 pub mod aws;
+pub mod class;
 pub mod hey_gen;
 pub mod openai;
+pub mod people;
 pub mod photoshop;
 use axum::{routing::post, Router};
 
@@ -16,4 +17,6 @@ pub fn routes() -> Router {
         .merge(authentications::routes())
         .merge(aws::routes())
         .merge(photoshop::routes())
+        .merge(people::routes())
+        .merge(class::routes())
 }

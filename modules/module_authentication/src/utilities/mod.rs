@@ -106,7 +106,6 @@ pub async fn create_class(
     client: &Pool,
 ) -> Result<u64, Errors> {
     let class = get_class_type(&people_infor.class, client).await?;
-    println!("debug 0");
 
     let class_days: HashSet<Weekday> = class
         .days_of_week
@@ -142,6 +141,7 @@ pub async fn create_class(
                 .with_timezone(&Utc);
 
             let params = Class {
+                id: "".to_string(),
                 personal_information: people_uuid.to_string(),
                 r#type: people_infor.class.to_ascii_lowercase(),
                 start_time,
@@ -203,7 +203,6 @@ pub async fn get_class_type(class_type: &str, client: &Pool) -> Result<ClassType
         start_time,
         end_time,
     };
-    println!("debug{:?}", res);
     Ok(res)
 }
 
