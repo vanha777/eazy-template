@@ -7,7 +7,7 @@ use std::sync::Arc;
 use axum::Json;
 use axum::{response::IntoResponse, Extension};
 use chrono::{Duration, Utc};
-use lib_people::{Class, People};
+use lib_people::{Class, ClassMongo, People, PeopleMongo};
 use models::{Credentials, RegisterCredentials};
 use rand::{distributions::Alphanumeric, Rng};
 use reqwest::header::HeaderMap;
@@ -48,13 +48,13 @@ pub async fn register(
     let mongo_client = &state.mongo_client;
     // Getting the specific collection
     let database = mongo_client.database("ladomana");
-    let collection = database.collection::<People>("personal_information");
+    let collection = database.collection::<PeopleMongo>("personal_information");
     // check valid credentials
     //
     // create a personal info in mongo
     let uuid = crate::utilities::create_user(&collection, request.people.clone()).await?;
     // create a class information
-    let class_collection = database.collection::<Class>("class_information");
+    let class_collection = database.collection::<ClassMongo>("class_information");
     let _ = crate::utilities::create_class(
         &class_collection,
         &uuid,
@@ -64,11 +64,11 @@ pub async fn register(
     .await?;
     // insert login detail into sql
     let new_login = Credentials {
-        email: request.email,
+        email: request.email_id,
         password: request.password,
     };
     let _ = crate::utilities::create_login(new_login, &uuid, sql_client.clone()).await?;
-    Ok(Json(request.people))
+    Ok(Json(200))
 }
 
 pub async fn init(

@@ -4,7 +4,7 @@ use crate::models::{ClassType, Credentials};
 use bcrypt::{hash, verify, DEFAULT_COST};
 use chrono::{Datelike, Duration, NaiveDateTime, NaiveTime, Utc, Weekday};
 use lib_errors::{Errors, NeverFailed};
-use lib_people::{Class, People};
+use lib_people::{Class, ClassMongo, People, PeopleMongo};
 use mongodb::{
     bson::{self, doc, oid::ObjectId, Bson, Document},
     Collection,
@@ -83,11 +83,11 @@ pub async fn get_user(collection: &Collection<Document>, uuid: &str) -> Result<P
 }
 
 pub async fn create_user(
-    collection: &Collection<People>,
+    collection: &Collection<PeopleMongo>,
     people: People,
 ) -> Result<String, Errors> {
     let id = collection
-        .insert_one(&people, None)
+        .insert_one(&people.convert_mongo_people(), None)
         .await
         .map_err(|e| Errors::Error(e.to_string()))?;
     let res = id
@@ -99,8 +99,7 @@ pub async fn create_user(
 }
 
 pub async fn create_class(
-    // Assuming `collection` and `Class` are correctly defined elsewhere
-    collection: &Collection<Class>,
+    collection: &Collection<ClassMongo>,
     people_uuid: &str,
     people_infor: People,
     client: &Pool,
@@ -112,11 +111,9 @@ pub async fn create_class(
         .iter()
         .map(|day| parse_day_of_week(day))
         .collect();
-
     let mut current_date = people_infor.start_date_1;
     let number_of_classes = people_infor.number_of_class.unwrap_or_default();
     let mut occurrences = 0;
-
     while occurrences < number_of_classes {
         if class_days.contains(&current_date.weekday()) {
             let new_start_time = class.start_time;
@@ -140,8 +137,7 @@ pub async fn create_class(
                 )
                 .with_timezone(&Utc);
 
-            let params = Class {
-                id: "".to_string(),
+            let params = ClassMongo {
                 personal_information: people_uuid.to_string(),
                 r#type: people_infor.class.to_ascii_lowercase(),
                 start_time,
@@ -157,11 +153,9 @@ pub async fn create_class(
 
             occurrences += 1; // Increment only if a class day is found
         }
-
         // Move to the next day
         current_date = current_date + Duration::days(1);
     }
-
     Ok(200)
 }
 

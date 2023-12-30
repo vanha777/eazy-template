@@ -10,7 +10,7 @@ pub struct Credentials {
 
 #[derive(Clone, Serialize, Deserialize, Debug)]
 pub struct RegisterCredentials {
-    pub email: String,
+    pub email_id: String,
     pub password: String,
     #[serde(flatten)]
     pub people: People,
