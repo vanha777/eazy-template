@@ -3,13 +3,18 @@ use std::sync::Arc;
 use aws_sdk_s3::primitives::ByteStreamError;
 use axum::Extension;
 use axum::{http::HeaderMap, response::IntoResponse, Json};
+use chrono::NaiveTime;
 use common_openai::models::UserRequest;
 use lib_errors::{Errors, NeverFailed};
 use lib_people::{Class, ClassMongo, ClassResponse, People};
 use lib_sharedstate::ServerState;
+use module_authentication::models::{ClassType, ClassTypeSql};
 use mongodb::bson::oid::ObjectId;
 use mongodb::bson::serde_helpers::serialize_rfc3339_string_as_bson_datetime;
 use mongodb::bson::{self, bson, doc, Document};
+use mysql_async::prelude::Queryable;
+use mysql_async::Row;
+use serde_json::from_str;
 
 use crate::models::{GetClassRequest, UpdateClassStatusRequest};
 extern crate module_authentication;
@@ -19,7 +24,6 @@ pub async fn update_class_status(
     state: Extension<Arc<ServerState>>,
     Json(req): Json<UpdateClassStatusRequest>,
 ) -> NeverFailed<impl IntoResponse> {
-    let sql_client = &state.sql_client;
     let mongo_client = &state.mongo_client;
     // Getting the specific collection
     let database = mongo_client.database("ladomana");
@@ -136,5 +140,64 @@ pub async fn get_class(
         student: people.convert_mongo_people(),
         class: class_info,
     };
+    Ok(Json(res))
+}
+
+pub async fn get_class_type(
+    headers: HeaderMap,
+    state: Extension<Arc<ServerState>>,
+) -> NeverFailed<impl IntoResponse> {
+    let sql_client = &state.sql_client;
+    let mut conn = sql_client
+        .get_conn()
+        .await
+        .map_err(|e| Errors::Error(e.to_string()))?;
+    //get class type
+    let rows: Vec<Row> = conn
+        .query("SELECT * FROM class")
+        .await
+        .map_err(|e| Errors::Error(e.to_string()))?;
+
+    let res: Vec<ClassTypeSql> = rows
+        .into_iter()
+        .filter_map(|row| {
+            // Example of extracting and parsing each field
+            let class_type: Option<String> = row.get("class_type");
+            let days_of_week_str: Option<String> = row.get("days_of_week");
+            let references: Option<String> = row.get("class_references");
+            let start_time_str: Option<String> = row.get("start_time");
+            let end_time_str: Option<String> = row.get("end_time");
+
+            // if days_of_week_str.is_none() || start_time_str.is_none() || end_time_str.is_none() {
+            //     return None; // Skip row if essential fields are missing
+            // }
+
+            let days_of_week_str = days_of_week_str
+                .unwrap_or_else(|| "".to_string())
+                .trim_matches('\'') // Remove leading and trailing single quotes
+                .replace("\\\"", "\""); // Replace escaped double quotes with actual double quotes
+
+            let days_of_week: Vec<String> = match from_str(&days_of_week_str) {
+                Ok(days) => days,
+                Err(_) => return None, // Skip row if JSON parsing fails
+            };
+
+            let start_time =
+                start_time_str.and_then(|s| NaiveTime::parse_from_str(&s, "%H:%M:%S").ok());
+
+            let end_time =
+                end_time_str.and_then(|s| NaiveTime::parse_from_str(&s, "%H:%M:%S").ok());
+
+            // Construct and return ClassType instance
+            Some(ClassTypeSql {
+                class_type,
+                days_of_week,
+                references,
+                start_time,
+                end_time,
+            })
+        })
+        .collect();
+
     Ok(Json(res))
 }

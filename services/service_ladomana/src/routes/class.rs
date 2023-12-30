@@ -19,4 +19,5 @@ pub fn routes() -> Router {
         .route("/update-class", post(handler::class::update_class))
         .route("/get-all-class", post(handler::class::get_all_class))
         .route("/get-class", post(handler::class::get_class))
+        .route("/get-class-type", post(handler::class::get_class_type))
 }
