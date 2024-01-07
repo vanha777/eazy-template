@@ -104,59 +104,110 @@ pub async fn create_class(
     people_infor: People,
     client: &Pool,
 ) -> Result<u64, Errors> {
-    let class = get_class_type(&people_infor.class, client).await?;
-
-    let class_days: HashSet<Weekday> = class
-        .days_of_week
-        .iter()
-        .map(|day| parse_day_of_week(day))
-        .collect();
     let mut current_date = people_infor.start_date_1;
     let number_of_classes = people_infor.number_of_class.unwrap_or_default();
     let mut occurrences = 0;
+
     while occurrences < number_of_classes {
-        if class_days.contains(&current_date.weekday()) {
-            let new_start_time = class.start_time;
-            let new_end_time = class.end_time;
+        for class_detail in &people_infor.class_detail {
+            let class_day = parse_day_of_week(&class_detail.day);
 
-            let start_time = current_date
-                .date()
-                .and_hms(
-                    chrono::Timelike::hour(&new_start_time.unwrap_or_default()),
-                    chrono::Timelike::minute(&new_start_time.unwrap_or_default()),
-                    chrono::Timelike::second(&new_start_time.unwrap_or_default()),
-                )
-                .with_timezone(&Utc);
+            if current_date.weekday() == class_day {
+                let start_time = current_date
+                    .date()
+                    .and_hms(
+                        chrono::Timelike::hour(&class_detail.start_time),
+                        chrono::Timelike::minute(&class_detail.start_time),
+                        chrono::Timelike::second(&class_detail.start_time),
+                    )
+                    .with_timezone(&Utc);
 
-            let end_time = current_date
-                .date()
-                .and_hms(
-                    chrono::Timelike::hour(&new_end_time.unwrap_or_default()),
-                    chrono::Timelike::minute(&new_end_time.unwrap_or_default()),
-                    chrono::Timelike::second(&new_end_time.unwrap_or_default()),
-                )
-                .with_timezone(&Utc);
+                let end_time = current_date
+                    .date()
+                    .and_hms(
+                        chrono::Timelike::hour(&class_detail.end_time),
+                        chrono::Timelike::minute(&class_detail.end_time),
+                        chrono::Timelike::second(&class_detail.end_time),
+                    )
+                    .with_timezone(&Utc);
 
-            let params = ClassMongo {
-                personal_information: people_uuid.to_string(),
-                r#type: people_infor.class.to_ascii_lowercase(),
-                start_time,
-                end_time,
-                status: Some(true),
-                references: people_infor.references.clone(),
-            };
+                let params = ClassMongo {
+                    personal_information: people_uuid.to_string(),
+                    r#type: class_detail.class_type.to_ascii_lowercase(),
+                    start_time,
+                    end_time,
+                    status: Some(true),
+                    references: people_infor.references.clone(),
+                };
 
-            collection
-                .insert_one(&params, None)
-                .await
-                .map_err(|e| Errors::Error(e.to_string()))?;
+                collection
+                    .insert_one(&params, None)
+                    .await
+                    .map_err(|e| Errors::Error(e.to_string()))?;
 
-            occurrences += 1; // Increment only if a class day is found
+                occurrences += 1;
+            }
         }
+
         // Move to the next day
         current_date = current_date + Duration::days(1);
     }
+
     Ok(200)
+
+    // let class = get_class_type(&people_infor.class, client).await?;
+
+    // let class_days: HashSet<Weekday> = class
+    //     .days_of_week
+    //     .iter()
+    //     .map(|day| parse_day_of_week(day))
+    //     .collect();
+    // let mut current_date = people_infor.start_date_1;
+    // let number_of_classes = people_infor.number_of_class.unwrap_or_default();
+    // let mut occurrences = 0;
+    // while occurrences < number_of_classes {
+    //     if class_days.contains(&current_date.weekday()) {
+    //         let new_start_time = class.start_time;
+    //         let new_end_time = class.end_time;
+
+    //         let start_time = current_date
+    //             .date()
+    //             .and_hms(
+    //                 chrono::Timelike::hour(&new_start_time.unwrap_or_default()),
+    //                 chrono::Timelike::minute(&new_start_time.unwrap_or_default()),
+    //                 chrono::Timelike::second(&new_start_time.unwrap_or_default()),
+    //             )
+    //             .with_timezone(&Utc);
+
+    //         let end_time = current_date
+    //             .date()
+    //             .and_hms(
+    //                 chrono::Timelike::hour(&new_end_time.unwrap_or_default()),
+    //                 chrono::Timelike::minute(&new_end_time.unwrap_or_default()),
+    //                 chrono::Timelike::second(&new_end_time.unwrap_or_default()),
+    //             )
+    //             .with_timezone(&Utc);
+
+    //         let params = ClassMongo {
+    //             personal_information: people_uuid.to_string(),
+    //             r#type: people_infor.class.to_ascii_lowercase(),
+    //             start_time,
+    //             end_time,
+    //             status: Some(true),
+    //             references: people_infor.references.clone(),
+    //         };
+
+    //         collection
+    //             .insert_one(&params, None)
+    //             .await
+    //             .map_err(|e| Errors::Error(e.to_string()))?;
+
+    //         occurrences += 1; // Increment only if a class day is found
+    //     }
+    //     // Move to the next day
+    //     current_date = current_date + Duration::days(1);
+    // }
+    // Ok(200)
 }
 
 pub async fn get_class_type(class_type: &str, client: &Pool) -> Result<ClassType, Errors> {

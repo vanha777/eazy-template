@@ -1,4 +1,4 @@
-use chrono::{DateTime, NaiveDateTime, Utc};
+use chrono::{DateTime, NaiveDateTime, Utc, NaiveTime};
 use mongodb::bson::oid::ObjectId;
 use serde::de::Deserializer;
 use serde::{Deserialize, Serialize};
@@ -25,6 +25,17 @@ pub struct People {
     pub start_date_2: Option<String>,
     pub number_of_month: Option<u64>,
     pub references: Option<String>,
+    pub number_of_class_per_week: Option<Vec<String>>,
+    pub number_of_minute_per_class: Option<u64>,
+    pub class_detail: Vec<ClassPerWeek>
+}
+
+#[derive(Clone, Serialize, Deserialize, Debug)]
+pub struct ClassPerWeek {
+    pub class_type: String,
+    pub day : String,
+    pub start_time: NaiveTime,
+    pub end_time: NaiveTime,
 }
 
 impl People {
@@ -48,6 +59,9 @@ impl People {
             start_date_2: self.start_date_2.clone(),
             number_of_month: self.number_of_month,
             references: self.references.clone(),
+            number_of_class_per_week: self.number_of_class_per_week.clone(),
+            number_of_minute_per_class: self.number_of_minute_per_class.clone(),
+            class_detail: self.class_detail.clone()
         }
     }
 }
@@ -72,6 +86,9 @@ pub struct PeopleMongo {
     pub start_date_2: Option<String>,
     pub number_of_month: Option<u64>,
     pub references: Option<String>,
+    pub number_of_class_per_week: Option<Vec<String>>,
+    pub number_of_minute_per_class: Option<u64>,
+    pub class_detail: Vec<ClassPerWeek>
 }
 
 fn deserialize_objectid_to_string<'de, D>(deserializer: D) -> Result<String, D::Error>
